@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>by-future-parent</artifactId>
+        <groupId>by.future</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>by-future-service-biz</artifactId>
+    <packaging>jar</packaging>
+
+    <name>by-future-service-biz</name>
+    <url>http://www.example.com</url>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>by-future-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>by-future-thread</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.jstorm</groupId>
+            <artifactId>jstorm-core</artifactId>
+            <!--本地调试需要注释，打包时需要开启-->
+            <!-- <scope>provided</scope> -->
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>future-service-biz</finalName>
+    </build>
+</project>
