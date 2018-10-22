@@ -8,6 +8,8 @@ import backtype.storm.tuple.Fields;
 import by.future.servicebiz.jstorm.word.bolt.WordCounter;
 import by.future.servicebiz.jstorm.word.bolt.WordNormalizer;
 import by.future.servicebiz.jstorm.word.spout.WordReader;
+import by.future.servicebiz.jstorm.word2.bolt.CountBolt;
+import by.future.servicebiz.jstorm.word2.spout.WordSpout;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -53,5 +55,33 @@ public class TopologyTest {
         cluster.shutdown();
     }
 
+
+    @Test
+    public void testWriteWord(){
+
+        TopologyBuilder topologyBuilder = new TopologyBuilder();
+        topologyBuilder.setSpout("out-word",new WordSpout(),1);
+        topologyBuilder.setBolt("word-count",new CountBolt(),1).shuffleGrouping("out-word");
+
+        Config config = new Config();
+        config.setNumWorkers(2);
+        config.setDebug(true);
+        config.put(Config.TOPOLOGY_MAX_TASK_PARALLELISM,1);
+
+        LocalCluster cluster = new LocalCluster();
+        cluster.submitTopology("firstTopo",config,topologyBuilder.createTopology());
+
+        //等足够的时间，否则程序没来的及运行就已经结束了，程序启动需要消耗时间
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        cluster.killTopology("firstTopo");
+        cluster.shutdown();
+
+
+    }
 
 }
