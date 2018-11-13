@@ -11,15 +11,15 @@
 
 
     <modules>
-        <module>future-common</module>
-        <module>future-entity</module>
-        <module>future-thread</module>
-        <module>future-service</module>
-        <module>future-service-biz</module>
-        <module>future-dal</module>
-        <module>future-web</module>
-        <module>future-mq</module>
-        <module>future-job</module>
+        <module>by-future-common</module>
+        <module>by-future-entity</module>
+        <module>by-future-thread</module>
+        <module>by-future-service</module>
+        <module>by-future-service-biz</module>
+        <module>by-future-dal</module>
+        <module>by-future-web</module>
+        <module>by-future-mq</module>
+        <module>by-future-job</module>
     </modules>
 
     <properties>
