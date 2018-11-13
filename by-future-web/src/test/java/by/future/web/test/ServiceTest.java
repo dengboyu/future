@@ -1,14 +1,7 @@
 package by.future.web.test;
 
 
-import backtype.storm.Config;
-import backtype.storm.LocalCluster;
-import backtype.storm.topology.TopologyBuilder;
-import backtype.storm.tuple.Fields;
 import by.future.common.utils.MapUtils;
-import by.future.servicebiz.jstorm.word.bolt.WordCounter;
-import by.future.servicebiz.jstorm.word.bolt.WordNormalizer;
-import by.future.servicebiz.jstorm.word.spout.WordReader;
 import by.future.thread.entity.ThreadTestTwoEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;

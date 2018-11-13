@@ -1,13 +1,14 @@
 package by.future.web.test;
 
 
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -137,11 +138,43 @@ public class WebTest {
         integerList.add(4);
         integerList.add(5);
         integerList.add(3);
+        integerList.add(5);
+
+//        Optional<Integer> optionalInteger =  integerList.stream().filter(n->n==5).findFirst();
+
+//        System.out.println(optionalInteger.isPresent());
+//        System.out.println(optionalInteger.get());
+
+//        Calendar calendar = Calendar.getInstance();
+//        int month = calendar.get(Calendar.MONTH)+1;
+//        int day = calendar.get(Calendar.DAY_OF_MONTH);
+//
+//        System.out.println(month+"==="+day);
+
+/*
 
         Collections.sort(integerList,(Integer o1, Integer o2)->o2.compareTo(o1));
 
         System.out.println(integerList);
+*/
 
+
+        System.out.println(DateFormatUtils.format(new Date(),"MMdd"));
+
+
+//        String s = "a";
+//        final int a;
+//
+//        if(StringUtils.equals(s,"aa")){
+//            a=2;
+//        }else{
+//            a = 4;
+//        }
+//
+//        Optional<Integer> optionalInteger =  integerList.stream().filter(n->n==a).findFirst();
+//
+//        System.out.println(optionalInteger.isPresent());
+//        System.out.println(optionalInteger.get());
     }
 
 
