@@ -19,7 +19,7 @@ public class SignUtils {
 
     /**
      * 签名算法,目前支持MD5算法
-     * @param： timeout大于0时验证签名超时
+     * @param： timeout大于0时验证签名超时，单位为s
      *
      * @Author：by@Deng
      * @Date：2018/6/1 10:10
