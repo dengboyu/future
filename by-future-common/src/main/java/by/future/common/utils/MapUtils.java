@@ -17,7 +17,7 @@ import java.util.*;
 public class MapUtils {
 
     //忽略签名字段
-    private static final String[] ignoreKeyArr = {"schema","serialversionuid","sign"};
+    private static final String[] ignoreKeyArr = {"schema","serialversionuid","sign","key"};
 
 
     /**
@@ -206,5 +206,54 @@ public class MapUtils {
         return buff;
     }
 
+
+
+    /**
+     * 对所有传入参数按照字段名的 ASCII 码从小到大排序（字典序），并且生成url参数串<br>
+     * @param urlEncode   是否需要URLENCODE
+     *        isFilter  是否要过滤对应一些字段
+     * @return
+     */
+    public static String formatObjectFilter(Object object, boolean urlEncode,boolean isFilter) {
+        String buff = "";
+        Field[] fields = object.getClass().getDeclaredFields();
+
+        try {
+            List<Field> infoIds = Arrays.asList(fields);
+
+            // 对所有传入参数按照字段名的 ASCII 码从小到大排序（字典序）
+            Collections.sort(infoIds, (o1,o2)-> o1.getName().compareTo(o2.getName()));
+
+            // 构造URL 键值对的格式
+            StringBuilder buf = new StringBuilder();
+            for (Field item : infoIds) {
+                if (StringUtils.isNotBlank(item.getName())) {
+                    item.setAccessible(true);
+
+                    String key = item.getName();
+                    Object val = item.get(object);
+
+                    if(val !=null ) {
+
+                        if(isFilter && Arrays.asList(ignoreKeyArr).contains(key.toLowerCase())){
+                            continue;
+                        }
+
+                        if(urlEncode && val instanceof String){
+                            val = URLEncoder.encode(val.toString(),"utf-8");
+                        }
+                        buf.append(key + "=" + val).append("&");
+                    }
+                }
+            }
+            buff = buf.toString();
+            if (StringUtils.isNotEmpty(buff)) {
+                buff = buff.substring(0, buff.length() - 1);
+            }
+        }catch (Exception e) {
+            //待写
+        }
+        return buff;
+    }
 
 }
