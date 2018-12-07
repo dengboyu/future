@@ -1,7 +1,6 @@
 package by.future.web.test;
 
 
-import by.future.common.utils.MapUtils;
 import by.future.thread.entity.ThreadTestTwoEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ServiceTest {
 
+
     @Test
     public void tesFor(){
 
@@ -24,7 +24,7 @@ public class ServiceTest {
         threadTestTwoEntity.setAddress("中国");
         threadTestTwoEntity.setAge(11);
 
-        System.out.println(MapUtils.formatObject(threadTestTwoEntity,false));
+//        System.out.println(MapUtils.formatObject(threadTestTwoEntity,false));
 
 
         /*Map<String,String> map  = new HashMap<>();
@@ -34,6 +34,7 @@ public class ServiceTest {
         map.put("io","90");
 
         System.out.println(MapUtils.formatObjectMap(map,false));*/
+
 
     }
 

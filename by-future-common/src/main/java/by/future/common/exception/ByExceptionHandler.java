@@ -1,5 +1,6 @@
 package by.future.common.exception;
 
+import by.future.common.enumconst.ResultEnum;
 import by.future.common.structure.entity.ResultEntity;
 import by.future.common.utils.ResultDataUtils;
 import org.slf4j.Logger;
@@ -28,14 +29,14 @@ public class ByExceptionHandler {
             //如果返回的是自定义异常
             ByException byException = (ByException) e;
             if(byException.getCode()==null){
-                return ResultDataUtils.error(CodeEnum.CUSTOMIZED.getCode(),byException.getMessage());   //返回自定义异常信息
+                return ResultDataUtils.error(ResultEnum.FAIL.getCode(),byException.getMessage());   //返回自定义异常信息
             }
             return ResultDataUtils.error(byException.getCode(),byException.getMessage());   //返回自定义异常信息
         }
 
         //除系统自定义异常外,其他统一返回系统错误
         logger.error("【系统异常】:",e);
-        return ResultDataUtils.error(CodeEnum.UNKNOW_ERROR.getCode(), CodeEnum.UNKNOW_ERROR.getMessage());
+        return ResultDataUtils.error(ResultEnum.FAIL.getCode(), ResultEnum.FAIL.getMessage());
     }
 
 }

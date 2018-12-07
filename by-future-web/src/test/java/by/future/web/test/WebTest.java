@@ -140,6 +140,11 @@ public class WebTest {
         integerList.add(3);
         integerList.add(5);
 
+        integerList.stream().forEach(n->{
+            if(n<4) return;
+            System.out.println(n);
+        });
+
 //        Optional<Integer> optionalInteger =  integerList.stream().filter(n->n==5).findFirst();
 
 //        System.out.println(optionalInteger.isPresent());
