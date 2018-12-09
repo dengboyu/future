@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @create 2018-09-08 22:03
  */
 @Component
-public class ApplicationContextProviderUtils implements ApplicationContextAware {
+public class GetBeanFromApplicationContextUtils implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;
 

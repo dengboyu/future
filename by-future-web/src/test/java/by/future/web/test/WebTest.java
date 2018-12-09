@@ -5,6 +5,8 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
@@ -140,10 +142,10 @@ public class WebTest {
         integerList.add(3);
         integerList.add(5);
 
-        integerList.stream().forEach(n->{
-            if(n<4) return;
-            System.out.println(n);
-        });
+//        integerList.stream().forEach(n->{
+//            if(n<4) return;
+//            System.out.println(n);
+//        });
 
 //        Optional<Integer> optionalInteger =  integerList.stream().filter(n->n==5).findFirst();
 
@@ -163,10 +165,10 @@ public class WebTest {
         System.out.println(integerList);
 */
 
-
         System.out.println(DateFormatUtils.format(new Date(),"MMdd"));
 
-
+        ApplicationContextAware contextAware ;
+        ApplicationContext applicationContext;
 //        String s = "a";
 //        final int a;
 //
