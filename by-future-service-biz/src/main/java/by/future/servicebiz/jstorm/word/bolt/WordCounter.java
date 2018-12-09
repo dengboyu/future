@@ -44,8 +44,8 @@ public class WordCounter implements IRichBolt {
 
         counters = new HashMap<>();
         this.outputCollector = outputCollector;
-        name = topologyContext.getThisComponentId();
-        id = topologyContext.getThisTaskId();
+//        name = topologyContext.getThisComponentId();
+//        id = topologyContext.getThisTaskId();
 
     }
 

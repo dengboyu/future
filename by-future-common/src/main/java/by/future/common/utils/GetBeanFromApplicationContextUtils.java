@@ -6,7 +6,8 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
- * 从spring容器获取bean
+ * 实现了ApplicationContextAware接口的类，在spring容器启动后将本身作为参数，执行setApplicationContext()方法
+ * 从而可以获取spring容器中的任意bean
  *
  * @author by@Deng
  * @create 2018-09-08 22:03

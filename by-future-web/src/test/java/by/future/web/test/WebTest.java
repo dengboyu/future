@@ -1,6 +1,8 @@
 package by.future.web.test;
 
 
+import by.future.common.utils.GetBeanFromApplicationContextUtils;
+import by.future.web.user.UserLogin;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -164,8 +166,6 @@ public class WebTest {
 
         System.out.println(integerList);
 */
-
-        System.out.println(DateFormatUtils.format(new Date(),"MMdd"));
 
         ApplicationContextAware contextAware ;
         ApplicationContext applicationContext;

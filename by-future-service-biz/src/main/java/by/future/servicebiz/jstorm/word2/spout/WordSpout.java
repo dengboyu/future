@@ -7,7 +7,7 @@ import backtype.storm.topology.IRichSpout;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Values;
-import org.apache.commons.lang.math.RandomUtils;
+import org.apache.commons.lang3.RandomUtils;
 
 import java.util.Map;
 
@@ -69,7 +69,7 @@ public class WordSpout implements IRichSpout {
      */
     @Override
     public void nextTuple() {
-        int index = RandomUtils.nextInt(6);
+        int index = RandomUtils.nextInt(6,199);
         spoutOutputCollector.emit(new Values(strs[index]));
         System.out.println("**************nextTuple():"+strs[index]);
     }
