@@ -1,4 +1,4 @@
-package by.future.servicetest.Test;
+package by.future.service.Test;
 
 
 import org.springframework.stereotype.Service;

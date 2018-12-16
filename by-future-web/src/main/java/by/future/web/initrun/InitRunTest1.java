@@ -19,7 +19,7 @@ public class InitRunTest1 implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("我要开始初始化数据了");
+        System.out.println("spring容器启动之后第1个初始化数据");
     }
 
 }

@@ -1,18 +1,16 @@
 package by.future.web.test;
 
 
-import by.future.common.utils.GetBeanFromApplicationContextUtils;
-import by.future.web.user.UserLogin;
-import org.apache.commons.lang3.time.DateFormatUtils;
+import by.future.servicebiz.config.SystemConfig;
+import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,7 +20,6 @@ import java.util.List;
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 public class WebTest {
-
 
 
     @Test
@@ -167,8 +164,7 @@ public class WebTest {
         System.out.println(integerList);
 */
 
-        ApplicationContextAware contextAware ;
-        ApplicationContext applicationContext;
+
 //        String s = "a";
 //        final int a;
 //
@@ -182,6 +178,17 @@ public class WebTest {
 //
 //        System.out.println(optionalInteger.isPresent());
 //        System.out.println(optionalInteger.get());
+    }
+
+
+    @Test
+    public void testConfigAnnotation(){
+
+
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SystemConfig.class);
+        System.out.println(JSON.toJSONString(applicationContext.getBean("beanConfig")));
+
     }
 
 
