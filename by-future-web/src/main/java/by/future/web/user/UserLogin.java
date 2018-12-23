@@ -24,7 +24,6 @@ public class UserLogin {
         String ret1 = requestMap.get("u1");
         String ret2 = ShortCodeUtils.toBase62(289324432l);
 
-
         return String.format("%s----%s",ret1,"aaaa");
     }
 

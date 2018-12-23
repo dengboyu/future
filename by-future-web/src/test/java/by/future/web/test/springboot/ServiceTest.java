@@ -1,4 +1,4 @@
-package by.future.web.test;
+package by.future.web.test.springboot;
 
 
 import by.future.thread.entity.ThreadTestTwoEntity;

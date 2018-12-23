@@ -29,6 +29,10 @@
             <groupId>javax.mail</groupId>
             <artifactId>javax.mail-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>by-future-dal</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.alibaba.jstorm</groupId>

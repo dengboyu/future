@@ -9,4 +9,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ServiceTest {
+
+
+    public void test(){
+        System.out.println("我就是一个测试类");
+    }
+
 }

@@ -1,13 +1,9 @@
-package by.future.web.test;
+package by.future.web.test.springboot;
 
 
-import by.future.servicebiz.config.SystemConfig;
-import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
@@ -182,15 +178,15 @@ public class WebTest {
 
 
     @Test
-    public void testConfigAnnotation(){
+    public void testConfigAnnotation() {
 
 
+//        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SystemConfig.class);
+//        System.out.println(JSON.toJSONString(applicationContext.getBean("beanConfig")));
 
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SystemConfig.class);
-        System.out.println(JSON.toJSONString(applicationContext.getBean("beanConfig")));
+
 
     }
-
 
 
 }

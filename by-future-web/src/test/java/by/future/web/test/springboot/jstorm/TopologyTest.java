@@ -1,4 +1,4 @@
-package by.future.web.test.jstorm;
+package by.future.web.test.springboot.jstorm;
 
 
 import backtype.storm.Config;

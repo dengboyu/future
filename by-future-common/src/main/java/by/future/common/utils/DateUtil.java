@@ -12,7 +12,8 @@ import java.util.List;
  * 日期一些的工具类
  * Created by by@Deng on 2017/7/11.
  */
-public class DateUtils {
+public class DateUtil {
+
 
     /**
      * 把某段时间转为每一天时间

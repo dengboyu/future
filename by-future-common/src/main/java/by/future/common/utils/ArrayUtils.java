@@ -8,7 +8,7 @@ import java.util.*;
  * @author by@Deng
  * @create 2017-09-20 14:59
  */
-public class ArrayUtil {
+public class ArrayUtils {
 
     /**
      * 获取两个数组相同的元素
