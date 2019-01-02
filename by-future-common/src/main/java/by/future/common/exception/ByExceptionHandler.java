@@ -5,9 +5,8 @@ import by.future.common.structure.entity.ResultEntity;
 import by.future.common.utils.ResultDataUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 
 /**
@@ -16,13 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author by@Deng
  * @create 2017-09-30 08:47
  */
-@ControllerAdvice
+//@ControllerAdvice
+@RestControllerAdvice
 public class ByExceptionHandler {
 
     private final static Logger logger = LoggerFactory.getLogger(ByException.class);
 
     @ExceptionHandler(Exception.class)
-    @ResponseBody
+//    @ResponseBody
     public ResultEntity handleBadRequest(Exception e) {
 
         if(e instanceof ByException){

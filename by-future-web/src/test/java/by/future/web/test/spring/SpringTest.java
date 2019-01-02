@@ -19,6 +19,7 @@ public class SpringTest {
 
     @Test
     public void test(){
+
         System.out.println("我们");
     }
 

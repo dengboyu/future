@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>by-future-web</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>future-web</name>
     <description>by-future-web</description>

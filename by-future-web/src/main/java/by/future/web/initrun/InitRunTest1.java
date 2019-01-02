@@ -6,7 +6,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
- * 在spring beans都初始化之后执行，在SprigApplication.run()之前执行，进行初始化
+ * 在spring beans都初始化之后执行，SprigApplication.run()完成之前执行，进行初始化
  * eg: 用于项目启动的时候需要初始化一些操作，比如初始化线程池，提前加载好加密证书等
  *
  * @Author：by@Deng

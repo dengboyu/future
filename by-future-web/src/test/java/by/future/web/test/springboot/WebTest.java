@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @Author：by@Deng
@@ -180,7 +181,10 @@ public class WebTest {
     @Test
     public void testConfigAnnotation() {
 
+        for(int i=0;i<10;i++){
+            System.out.println(new Random().nextInt(2));
 
+        }
 //        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SystemConfig.class);
 //        System.out.println(JSON.toJSONString(applicationContext.getBean("beanConfig")));
 

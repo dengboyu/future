@@ -79,11 +79,13 @@
 
 
             <!--springboot模块-->
-            <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-parent</artifactId>-->
-            <!--<version>${spring.version}</version>-->
-            <!--</dependency>-->
+            <!--<dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>-->
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -306,6 +308,7 @@
         </resources>
 
         <plugins>
+            <!-- 把springBoot项目打包为jar可执行包 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

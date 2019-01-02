@@ -18,8 +18,8 @@ public class TestServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String aa="fdafdafdafdas";
-        for(int i=0;i<10000;i++){
-            aa+="fdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        for(int i=0;i<100;i++){
+            aa+="fdsaaaaaaaa";
         }
         response.getWriter().write(aa);
 
