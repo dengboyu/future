@@ -19,8 +19,8 @@
     <dependencies>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>by-future-common</artifactId>
         </dependency>
 
     </dependencies>

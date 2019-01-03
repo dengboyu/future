@@ -17,15 +17,16 @@
 
 
     <dependencies>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>by-future-thread</artifactId>
+        </dependency>
+
         <!--quartz定时器jar包-->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>by-future-common</artifactId>
         </dependency>
 
     </dependencies>

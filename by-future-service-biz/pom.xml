@@ -19,26 +19,20 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>by-future-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>by-future-thread</artifactId>
         </dependency>
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>javax.mail-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>by-future-dal</artifactId>
-        </dependency>
+
 
         <dependency>
             <groupId>com.alibaba.jstorm</groupId>
             <artifactId>jstorm-core</artifactId>
             <!--本地调试需要注释，打包时需要开启-->
             <!-- <scope>provided</scope> -->
+        </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
         </dependency>
 
         <!--elasticsearch包-->

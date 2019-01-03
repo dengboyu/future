@@ -1,8 +1,6 @@
 package by.future.entity.fastjson;
 
 
-import com.sun.istack.internal.NotNull;
-
 import java.util.Date;
 
 /**
@@ -11,7 +9,7 @@ import java.util.Date;
  */
 public class FormatterTestEntity {
 
-    @NotNull
+
     private Date date;
 
 

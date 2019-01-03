@@ -17,6 +17,11 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>by-future-thread</artifactId>
+        </dependency>
+
         <!-- active mq -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
