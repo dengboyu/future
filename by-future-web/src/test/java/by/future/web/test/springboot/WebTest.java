@@ -184,11 +184,6 @@ public class WebTest {
     public void testConfigAnnotation() {
 
 
-//        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SystemConfig.class);
-//        System.out.println(JSON.toJSONString(applicationContext.getBean("beanConfig")));
-
-        System.out.println(name);
-
     }
 
 
