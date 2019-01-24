@@ -1,6 +1,9 @@
 package by.future.web.test.springboot;
 
 
+import by.future.common.utils.JSONUtils;
+import by.future.entity.test.PersonTest;
+import by.future.entity.common.EntityWrapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -183,7 +186,11 @@ public class WebTest {
     @Test
     public void testConfigAnnotation() {
 
+        String test = "{\"dm_vincent\":{\"id\":1,\"name\":\"dm_vincent\",\"age\":28},\"dm_vincent2\":{\"id\":2,\"name\":\"dm_vincent2\",\"age\":29},\"dm_vincent3\":{\"id\":3,\"name\":\"dm_vincent3\",\"age\":30}}";
 
+        EntityWrapper<PersonTest> entityWrapper = JSONUtils.getEntityWrapper(test, PersonTest.class);
+        System.out.println(entityWrapper);
+        System.out.println(entityWrapper.getEntityWrapper().get("dm_vincent"));
     }
 
 
