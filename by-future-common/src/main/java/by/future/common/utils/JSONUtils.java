@@ -27,7 +27,7 @@ public class JSONUtils {
     public static <T> EntityWrapper<T> getEntityWrapper(String jsonString, Class<T> prototype) {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        EntityWrapper<T> wrapper = new EntityWrapper<T>();
+        EntityWrapper<T> wrapper = new EntityWrapper();
 
         try {
             JsonNode root = objectMapper.readTree(jsonString);
