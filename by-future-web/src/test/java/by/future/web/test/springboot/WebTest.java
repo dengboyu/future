@@ -2,8 +2,8 @@ package by.future.web.test.springboot;
 
 
 import by.future.common.utils.JSONUtils;
-import by.future.entity.test.PersonTest;
 import by.future.entity.common.EntityWrapper;
+import by.future.entity.test.PersonTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,8 +30,8 @@ public class WebTest {
         List<Integer> collection = new ArrayList<>();
         collection.add(14);
         collection.add(43);
-        collection.add(64);
         collection.add(89);
+        collection.add(64);
         collection.add(5);
         collection.add(112);
         collection.add(55);
@@ -70,9 +70,7 @@ public class WebTest {
         //filter过滤操作
 //        List<Integer> filterList = collection.stream().filter(n-> n > 500).collect(Collectors.toList());
 
-//        Optional<Integer> optionalInteger = collection.stream().filter(n->{
-//            return n>50;
-//        }).findFirst();
+//        Optional<Integer> optionalInteger = collection.stream().filter(n-> n>50).findFirst();
 
 //        System.out.println(filterList);
 //        System.out.println(optionalInteger.isPresent());
