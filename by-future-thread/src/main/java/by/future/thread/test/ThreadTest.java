@@ -23,6 +23,9 @@ public class ThreadTest implements Runnable {
     private ThreadTestEntity threadTestEntity;
     private ThreadTestTwoEntity threadTestTwoEntity;
 
+    public ThreadTest() {
+    }
+
     public ThreadTest(ThreadTestEntity threadTestEntity, ThreadTestTwoEntity threadTestTwoEntity) {
         this.threadTestEntity = threadTestEntity;
         this.threadTestTwoEntity = threadTestTwoEntity;

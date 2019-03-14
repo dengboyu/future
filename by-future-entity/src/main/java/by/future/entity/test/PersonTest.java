@@ -1,15 +1,18 @@
 package by.future.entity.test;
 
 
+import java.math.BigDecimal;
+
 /**
  * @Author：by@Deng
  * @Date：2019/1/24 15:28
  */
 public class PersonTest {
 
-    public String id;
-    public String name;
-    public int age;
+    private String id;
+    private String name;
+    private int age;
+    private BigDecimal price;
 
     public String getId() {
         return id;
@@ -35,12 +38,21 @@ public class PersonTest {
         this.age = age;
     }
 
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
-        return "Person{" +
-                "id=" + id +
+        return "PersonTest{" +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", price=" + price +
                 '}';
     }
 }
