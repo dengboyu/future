@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Author：by@Deng
@@ -136,10 +139,19 @@ public class WebTest {
         List<Integer> integerList = new ArrayList<>();
         integerList.add(1);
         integerList.add(2);
+        integerList.add(5);
         integerList.add(4);
         integerList.add(5);
         integerList.add(3);
-        integerList.add(5);
+
+        //多个比较，获取最大值
+        //CouponItemDTO hotelCouponItemDTO = hotelCouponList.stream().max(Comparator.comparing(CouponItemDTO::getCouponPrice)).get();
+
+        /*int max = integerList.stream().max(Integer::compareTo).get();
+        System.out.println("Max的值:"+max);*/
+
+//        int max = integerList.stream().mapToInt(r->r).max().getAsInt();
+//        System.out.println("Max的值:"+max);
 
 //        integerList.stream().forEach(n->{
 //            if(n<4) return;
@@ -178,6 +190,49 @@ public class WebTest {
 //
 //        System.out.println(optionalInteger.isPresent());
 //        System.out.println(optionalInteger.get());
+
+
+        List<PersonTest> personTestList = new ArrayList<>();
+
+        PersonTest personTest1 = new PersonTest();
+        personTest1.setPrice(new BigDecimal("11"));
+        personTestList.add(personTest1);
+
+        PersonTest personTest2 = new PersonTest();
+        personTest2.setPrice(new BigDecimal("12"));
+        personTestList.add(personTest2);
+
+        PersonTest personTest3 = new PersonTest();
+        personTest3.setPrice(new BigDecimal("14"));
+        personTestList.add(personTest3);
+
+        PersonTest personTest4 = new PersonTest();
+        personTest4.setPrice(new BigDecimal("10"));
+        personTest4.setName("我1");
+        personTestList.add(personTest4);
+
+        PersonTest personTest5 = new PersonTest();
+        personTest5.setPrice(new BigDecimal("10"));
+        personTest5.setName("2sss");
+        personTestList.add(personTest5);
+
+
+//        List<Integer> testList = personTestList.stream().map(n->n.getPrice().intValue()).collect(Collectors.toList());
+
+//        System.out.println(personTestList);
+//
+        System.out.println("排序后"+personTestList.stream().sorted(Comparator.comparing(PersonTest::getPrice)).collect(Collectors.toList()));
+        System.out.println("排序后2"+personTestList.stream().sorted(Comparator.comparing(PersonTest::getPrice).reversed()).collect(Collectors.toList()));
+//        System.out.println("排序后1"+personTestList.stream().max(Comparator.comparing(PersonTest::getPrice)).get());
+//        System.out.println("排序后2"+personTestList.stream().min(Comparator.comparing(PersonTest::getPrice)).get());
+
+
+
+
+
+
+
+
     }
 
 
