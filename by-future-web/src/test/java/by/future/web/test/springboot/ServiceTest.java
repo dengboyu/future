@@ -19,10 +19,10 @@ public class ServiceTest {
     @Test
     public void tesFor(){
 
-        ThreadTestTwoEntity threadTestTwoEntity = new ThreadTestTwoEntity();
+        /*ThreadTestTwoEntity threadTestTwoEntity = new ThreadTestTwoEntity();
         threadTestTwoEntity.setStu("aaaa");
         threadTestTwoEntity.setAddress("中国");
-        threadTestTwoEntity.setAge(11);
+        threadTestTwoEntity.setAge(11);*/
 
 //        System.out.println(MapUtils.formatObject(threadTestTwoEntity,false));
 
@@ -36,11 +36,18 @@ public class ServiceTest {
         System.out.println(MapUtils.formatObjectMap(map,false));*/
 
 
+
     }
 
 
+    @Test
+    public void testOOM(){
+        //简单测试一下outOfMemory，向内存申请了4G的内存空间
+        //因为内存没这么大，所以报内存溢出，1个int占用4个字节，B：字节
+        int[] arr = new int[1024 * 1024 *1024];
 
+        System.out.println(arr);
 
-
+    }
 
 }
