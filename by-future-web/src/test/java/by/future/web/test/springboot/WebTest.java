@@ -1,6 +1,7 @@
 package by.future.web.test.springboot;
 
 
+import by.future.common.utils.CommonUtils;
 import by.future.common.utils.JSONUtils;
 import by.future.entity.common.EntityWrapper;
 import by.future.entity.test.PersonTest;
@@ -12,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -194,16 +194,17 @@ public class WebTest {
 
         List<PersonTest> personTestList = new ArrayList<>();
 
-        PersonTest personTest1 = new PersonTest();
-        personTest1.setPrice(new BigDecimal("11"));
-        personTestList.add(personTest1);
-
-        PersonTest personTest2 = new PersonTest();
-        personTest2.setPrice(new BigDecimal("12"));
-        personTestList.add(personTest2);
-
+//        PersonTest personTest1 = new PersonTest();
+//        personTest1.setPrice(new BigDecimal("11"));
+//        personTestList.add(personTest1);
+//
+//        PersonTest personTest2 = new PersonTest();
+//        personTest2.setPrice(new BigDecimal("12"));
+//        personTestList.add(personTest2);
+//
         PersonTest personTest3 = new PersonTest();
         personTest3.setPrice(new BigDecimal("14"));
+        personTest3.setName("hello");
         personTestList.add(personTest3);
 
         PersonTest personTest4 = new PersonTest();
@@ -213,16 +214,20 @@ public class WebTest {
 
         PersonTest personTest5 = new PersonTest();
         personTest5.setPrice(new BigDecimal("10"));
-        personTest5.setName("2sss");
+        personTest5.setName("我1");
         personTestList.add(personTest5);
 
+
+        System.out.println(personTestList.stream().distinct().collect(Collectors.toList()));
+        System.out.println(personTestList.stream().filter(CommonUtils.distinctByKey(n->n.getName())).collect(Collectors.toList()));
+        System.out.println(personTestList);
 
 //        List<Integer> testList = personTestList.stream().map(n->n.getPrice().intValue()).collect(Collectors.toList());
 
 //        System.out.println(personTestList);
 //
-        System.out.println("排序后"+personTestList.stream().sorted(Comparator.comparing(PersonTest::getPrice)).collect(Collectors.toList()));
-        System.out.println("排序后2"+personTestList.stream().sorted(Comparator.comparing(PersonTest::getPrice).reversed()).collect(Collectors.toList()));
+//        System.out.println("排序后"+personTestList.stream().sorted(Comparator.comparing(PersonTest::getPrice)).collect(Collectors.toList()));
+//        System.out.println("排序后2"+personTestList.stream().sorted(Comparator.comparing(PersonTest::getPrice).reversed()).collect(Collectors.toList()));
 //        System.out.println("排序后1"+personTestList.stream().max(Comparator.comparing(PersonTest::getPrice)).get());
 //        System.out.println("排序后2"+personTestList.stream().min(Comparator.comparing(PersonTest::getPrice)).get());
 

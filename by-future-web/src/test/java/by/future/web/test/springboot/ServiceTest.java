@@ -2,6 +2,7 @@ package by.future.web.test.springboot;
 
 
 import by.future.common.cache.SafeBuffer;
+import by.future.thread.entity.ThreadTestTwoEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +19,11 @@ public class ServiceTest {
 
     @Test
     public void tesFor(){
+
+        System.out.println("adfadaf".hashCode());
+
+        ThreadTestTwoEntity threadTestTwoEntity = new ThreadTestTwoEntity();
+        System.out.println("我的code"+threadTestTwoEntity.hashCode());
 
 //        ThreadTestTwoEntity threadTestTwoEntity = new ThreadTestTwoEntity();
 //        threadTestTwoEntity.setStu("aaaa");
@@ -62,9 +68,10 @@ public class ServiceTest {
                 public void run() {
 
                     try {
-                        Thread.sleep(1000);
+                        Thread.currentThread().sleep(1000000);
 
-                        safeBuffer.put("hi,我是生产者");
+                        safeBuffer.put("hi,我是生产者:");
+
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -81,11 +88,9 @@ public class ServiceTest {
 
                     try {
 
-                        Thread.sleep(1000);
-
                         String data = safeBuffer.get();
 
-                        System.out.println("我获取到的数据是："+data);
+                        System.out.println("线程：" +Thread.currentThread().getName()+"获取到的数据是："+data);
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
