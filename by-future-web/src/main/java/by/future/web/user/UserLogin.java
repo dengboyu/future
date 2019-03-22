@@ -2,12 +2,15 @@ package by.future.web.user;
 
 
 import by.future.common.utils.ShortCodeUtils;
+import by.future.common.utils.UUIDUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
@@ -19,32 +22,40 @@ import java.util.Map;
 public class UserLogin {
 
 
-    @GetMapping("aaaaa")
-    public String test(@RequestParam Map<String,String> requestMap, HttpServletRequest request){
+    /**
+     * 登录
+     *
+     * @Author: by@Deng
+     * @Date: 2019-03-23 00:57
+     */
+    @GetMapping("login")
+    public String login(@RequestParam Map<String,String> requestMap, HttpServletRequest request, HttpServletResponse response){
 
         String ret1 = requestMap.get("u1");
         String ret2 = ShortCodeUtils.toBase62(289324432l);
 
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        Cookie cookie = new Cookie("token",UUIDUtils.getUUID());
+        cookie.setMaxAge(2 * 60 * 60 *24);
+        cookie.setPath("/");
+        cookie.setHttpOnly(true);
+        response.addCookie(cookie);
 
         return String.format("%s----%s",ret1,"aaaa");
+    }
+
+
+    /**
+     * 测试
+     *
+     * @Author: by@Deng
+     * @Date: 2019-03-23 00:57
+     */
+    @GetMapping("test")
+    public String test(HttpServletResponse response){
+
+
+
+        return "success";
     }
 
 }
