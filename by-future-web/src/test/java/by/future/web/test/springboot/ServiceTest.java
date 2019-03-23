@@ -2,7 +2,8 @@ package by.future.web.test.springboot;
 
 
 import by.future.common.cache.SafeBuffer;
-import by.future.thread.entity.ThreadTestTwoEntity;
+import by.future.common.utils.ShortCodeUtils;
+import by.future.common.utils.StringUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,10 +21,11 @@ public class ServiceTest {
     @Test
     public void tesFor(){
 
-        System.out.println("adfadaf".hashCode());
-
-        ThreadTestTwoEntity threadTestTwoEntity = new ThreadTestTwoEntity();
-        System.out.println("我的code"+threadTestTwoEntity.hashCode());
+        System.out.println(ShortCodeUtils.toBase62(StringUtil.generateUUID("首页红包")));
+        System.out.println(ShortCodeUtils.toBase62(StringUtil.generateUUID("首页红包")));
+        System.out.println(ShortCodeUtils.toBase62(StringUtil.generateUUID("首页红包发达水电费法司法")));
+        System.out.println(ShortCodeUtils.toBase62(StringUtil.generateUUID("list页")));
+        System.out.println(ShortCodeUtils.toBase62(StringUtil.generateUUID("X页")));
 
 
         /*ThreadTestTwoEntity threadTestTwoEntity = new ThreadTestTwoEntity();

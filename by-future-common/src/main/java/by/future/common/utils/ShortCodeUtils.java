@@ -3,6 +3,7 @@ package by.future.common.utils;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class ShortCodeUtils {
     //码表
     public static final String[] codeArr = {"Q","G","e","F","7","k","b","4","K","o","u","w","S","D","W","m","5","c","A","9","1","a","T","I","3","P","j","X","J","2","s","R","y","x","n","p","f","N","h","l","z","q","r","v","M","i","C","8","Y","t","V","0","O","Z","d","g","H","B","6","L","U","E"};
 
-    private static final List<String> strList = Arrays.asList(codeArr);
+    private static final List<String> strList = new ArrayList<>(Arrays.asList(codeArr));
 
     /*//将code随机打乱
     public static void main(String[] args) {
