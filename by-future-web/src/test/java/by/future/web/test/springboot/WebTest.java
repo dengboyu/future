@@ -232,12 +232,6 @@ public class WebTest {
 //        System.out.println("排序后2"+personTestList.stream().min(Comparator.comparing(PersonTest::getPrice)).get());
 
 
-
-
-
-
-
-
     }
 
 
@@ -250,6 +244,8 @@ public class WebTest {
         System.out.println(entityWrapper);
         System.out.println(entityWrapper.getEntityWrapper().get("dm_vincent"));
     }
+
+
 
 
 }
