@@ -13,8 +13,8 @@ import by.future.thread.entity.ThreadTestTwoEntity;
  */
 public class ThreadDemo implements Runnable {
 
-    private IThreadTwo threadTwo = GetBeanFromApplicationContextUtils.getBean("threadTwo", IThreadTwo.class);
-    private IThreadTwo threadTwo1 = GetBeanFromApplicationContextUtils.getBean("threadThree", IThreadTwo.class);
+    private static IThreadTwo threadTwo = GetBeanFromApplicationContextUtils.getBean("threadTwo", IThreadTwo.class);
+    private static IThreadTwo threadTwo1 = GetBeanFromApplicationContextUtils.getBean("threadThree", IThreadTwo.class);
 
     private ThreadTestEntity threadTestEntity;
     private ThreadTestTwoEntity threadTestTwoEntity;

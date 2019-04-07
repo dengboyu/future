@@ -1,9 +1,6 @@
 package by.future.web.test.springboot;
 
 
-import by.future.common.utils.CommonUtils;
-import by.future.common.utils.JSONUtils;
-import by.future.entity.common.EntityWrapper;
 import by.future.entity.test.PersonTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,11 +32,14 @@ public class WebTest {
         collection.add(43);
         collection.add(89);
         collection.add(64);
-        collection.add(5);
+        collection.add(55);
         collection.add(112);
         collection.add(55);
         collection.add(55);
         collection.add(58);
+
+        /*long count = collection.stream().filter(n->n==60).count();
+        System.out.println(count);*/
 
         /*int[] a ={0};
         collection.stream().forEach(n->{
@@ -144,6 +144,11 @@ public class WebTest {
         integerList.add(5);
         integerList.add(3);
 
+
+        System.out.println(integerList.stream().sorted((x,y)->{if(x<4) return -1; return 1;}).collect(Collectors.toList()));
+
+//        System.out.println(integerList.stream().filter(n->n>4).mapToInt(Integer::intValue).sum());
+
         //多个比较，获取最大值
         //CouponItemDTO hotelCouponItemDTO = hotelCouponList.stream().max(Comparator.comparing(CouponItemDTO::getCouponPrice)).get();
 
@@ -217,12 +222,16 @@ public class WebTest {
         personTest5.setName("我1");
         personTestList.add(personTest5);
 
+        //reduce的拼接函数
+//        System.out.println(personTestList.stream().map(n->n.getName()).reduce("begin",(x, y) -> x.concat(y)));
 
-        System.out.println(personTestList.stream().distinct().collect(Collectors.toList()));
-        System.out.println(personTestList.stream().filter(CommonUtils.distinctByKey(n->n.getName())).collect(Collectors.toList()));
-        System.out.println(personTestList);
+
+//        System.out.println(personTestList.stream().distinct().collect(Collectors.toList()));
+//        System.out.println(personTestList.stream().filter(CommonUtils.distinctByKey(n->n.getName())).collect(Collectors.toList()));
+//        System.out.println(personTestList);
 
 //        List<Integer> testList = personTestList.stream().map(n->n.getPrice().intValue()).collect(Collectors.toList());
+
 
 //        System.out.println(personTestList);
 //
@@ -238,11 +247,12 @@ public class WebTest {
     @Test
     public void testConfigAnnotation() {
 
-        String test = "{\"dm_vincent\":{\"id\":1,\"name\":\"dm_vincent\",\"age\":28},\"dm_vincent2\":{\"id\":2,\"name\":\"dm_vincent2\",\"age\":29},\"dm_vincent3\":{\"id\":3,\"name\":\"dm_vincent3\",\"age\":30}}";
+//        String test = "{\"dm_vincent\":{\"id\":1,\"name\":\"dm_vincent\",\"age\":28},\"dm_vincent2\":{\"id\":2,\"name\":\"dm_vincent2\",\"age\":29},\"dm_vincent3\":{\"id\":3,\"name\":\"dm_vincent3\",\"age\":30}}";
+//
+//        EntityWrapper<PersonTest> entityWrapper = JSONUtils.getEntityWrapper(test, PersonTest.class);
+//        System.out.println(entityWrapper);
+//        System.out.println(entityWrapper.getEntityWrapper().get("dm_vincent"));
 
-        EntityWrapper<PersonTest> entityWrapper = JSONUtils.getEntityWrapper(test, PersonTest.class);
-        System.out.println(entityWrapper);
-        System.out.println(entityWrapper.getEntityWrapper().get("dm_vincent"));
     }
 
 
