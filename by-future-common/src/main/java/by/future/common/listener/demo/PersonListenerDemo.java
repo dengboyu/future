@@ -23,8 +23,8 @@ public class PersonListenerDemo{
                 System.out.println(p+"跑的瘦下来了");
             }
         });
-//        person.eat();
-//        person.run();
+        person.eat();
+        person.run();
     }
 }
 
