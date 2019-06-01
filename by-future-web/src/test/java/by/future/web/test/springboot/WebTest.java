@@ -144,8 +144,8 @@ public class WebTest {
         integerList.add(5);
         integerList.add(3);
 
-
         System.out.println(integerList.stream().sorted((x,y)-> {if(x<4 && y<4) return -1; return 1;}).collect(Collectors.toList()));
+
 //        System.out.println(integerList.stream().filter(n->n>4).mapToInt(Integer::intValue).sum());
 
         //多个比较，获取最大值
@@ -207,23 +207,29 @@ public class WebTest {
 //        personTestList.add(personTest2);
 //
         PersonTest personTest3 = new PersonTest();
+        personTest3.setId("1");
         personTest3.setPrice(new BigDecimal("14"));
         personTest3.setName("hello");
         personTestList.add(personTest3);
 
         PersonTest personTest4 = new PersonTest();
+        personTest4.setId("1");
         personTest4.setPrice(new BigDecimal("10"));
         personTest4.setName("我1");
         personTestList.add(personTest4);
 
         PersonTest personTest5 = new PersonTest();
+        personTest5.setId("2");
         personTest5.setPrice(new BigDecimal("10"));
         personTest5.setName("我1");
         personTestList.add(personTest5);
 
+        //根据某个属性分组
+        /*Map<BigDecimal,List<PersonTest>> mapList = personTestList.stream().collect(Collectors.groupingBy(PersonTest::getPrice));
+        System.out.println(mapList);*/
+
         //reduce的拼接函数
 //        System.out.println(personTestList.stream().map(n->n.getName()).reduce("begin",(x, y) -> x.concat(y)));
-
 
 //        System.out.println(personTestList.stream().distinct().collect(Collectors.toList()));
 //        System.out.println(personTestList.stream().filter(CommonUtils.distinctByKey(n->n.getName())).collect(Collectors.toList()));
