@@ -145,8 +145,7 @@ public class WebTest {
         integerList.add(3);
 
 
-        System.out.println(integerList.stream().sorted((x,y)->{if(x<4) return -1; return 1;}).collect(Collectors.toList()));
-
+        System.out.println(integerList.stream().sorted((x,y)-> {if(x<4 && y<4) return -1; return 1;}).collect(Collectors.toList()));
 //        System.out.println(integerList.stream().filter(n->n>4).mapToInt(Integer::intValue).sum());
 
         //多个比较，获取最大值
