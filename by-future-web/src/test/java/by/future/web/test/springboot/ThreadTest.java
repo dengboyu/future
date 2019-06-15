@@ -2,11 +2,17 @@ package by.future.web.test.springboot;
 
 
 import by.future.common.cache.SafeBuffer;
+import by.future.common.utils.ThreadUtils;
 import by.future.thread.demo.impl.ThreadDemo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 /**
  * @Author：by@Deng
@@ -71,7 +77,34 @@ public class ThreadTest {
     @Test
     public void testThread(){
 
-        new Thread(new ThreadDemo()).start();
+        ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
+
+        List<Future> futureList = new ArrayList<>();
+        for(int i=0;i<20;i++){
+
+            executor.execute(new ThreadDemo());
+
+//            Future<Integer> f= executor.submit(new ThreadCallableDemo(i));
+//            futureList.add(f);
+        }
+
+        /*futureList.stream().forEach(n->{
+            try {
+
+                System.out.println(n.get());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });*/
+
+        System.out.println("看看谁先出来");
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 

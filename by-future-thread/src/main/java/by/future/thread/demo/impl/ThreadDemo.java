@@ -33,6 +33,12 @@ public class ThreadDemo implements Runnable {
 //        System.out.println(threadTestTwoEntity.getAddress()+"==="+threadTestTwoEntity.getStu());
         threadTwo.test();
         threadTwo1.test();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
