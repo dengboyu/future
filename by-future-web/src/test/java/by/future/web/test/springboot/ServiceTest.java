@@ -1,13 +1,19 @@
 package by.future.web.test.springboot;
 
 
+import by.future.common.utils.TimeUtils;
+import by.future.servicebiz.flink.wordcount.FlinkInstance;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.util.Date;
 
 /**
  * @Author：by@Deng
@@ -16,7 +22,6 @@ import java.text.NumberFormat;
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ServiceTest {
-
 
     @Test
     public void tesFor(){
@@ -64,9 +69,12 @@ public class ServiceTest {
 
 
     @Test
-    public void testData(){
+    public void testData() throws Exception {
 
+//        FlinkInstance.getStreamInstance();
 
+        Date date = DateUtils.parseDate("2019-08-07 08:20", TimeUtils.PATTERNS);
+        System.out.println(date);
 
     }
 
