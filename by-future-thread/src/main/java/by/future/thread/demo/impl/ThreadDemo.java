@@ -1,6 +1,6 @@
 package by.future.thread.demo.impl;
 
-import by.future.common.utils.GetBeanFromApplicationContextUtils;
+import by.future.common.utils.ApplicationContextUtils;
 import by.future.thread.demo.IThreadTwo;
 import by.future.thread.entity.ThreadTestEntity;
 import by.future.thread.entity.ThreadTestTwoEntity;
@@ -13,8 +13,8 @@ import by.future.thread.entity.ThreadTestTwoEntity;
  */
 public class ThreadDemo implements Runnable {
 
-    private static IThreadTwo threadTwo = GetBeanFromApplicationContextUtils.getBean("threadTwo", IThreadTwo.class);
-    private static IThreadTwo threadTwo1 = GetBeanFromApplicationContextUtils.getBean("threadThree", IThreadTwo.class);
+    private static IThreadTwo threadTwo = ApplicationContextUtils.getBean("threadTwo", IThreadTwo.class);
+    private static IThreadTwo threadTwo1 = ApplicationContextUtils.getBean("threadThree", IThreadTwo.class);
 
     private ThreadTestEntity threadTestEntity;
     private ThreadTestTwoEntity threadTestTwoEntity;

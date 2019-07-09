@@ -4,6 +4,7 @@ package by.future.web.test.springboot;
 import by.future.common.cache.SafeBuffer;
 import by.future.common.utils.ThreadUtils;
 import by.future.thread.demo.impl.ThreadDemo;
+import by.future.thread.demo.impl.ThreadLocalTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -109,6 +110,26 @@ public class ThreadTest {
     }
 
 
+    @Test
+    public void testThreadLocal() throws InterruptedException {
+
+        /*ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
+
+        for(int i=0;i<40;i++){
+            executor.execute(new ThreadLocalTest());
+        }*/
+
+        Thread thread1 = new Thread(new ThreadLocalTest());
+        Thread thread2 = new Thread(new ThreadLocalTest());
+
+        thread1.start();
+        thread2.start();
+
+
+        Thread.sleep(5000);
+
+
+    }
 
 
 

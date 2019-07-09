@@ -1,16 +1,208 @@
 package by.future.common.utils;
 
 
+import by.future.common.constant.Const;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.axis.components.logger.LogFactory;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.apache.poi.ss.formula.functions.T;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.spi.LoggerFactoryBinder;
 
 import java.io.*;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
+/**
+ * url请求工具类
+ *
+ * @Author: by@Deng
+ * @Date: 2019-07-06 19:11
+ */
 public class HttpClientUtils {
-    private static Logger log = LoggerFactory.getLogger(HttpClientUtils.class);
+
+    private static Logger logger = LoggerFactory.getLogger(HttpClientUtils.class);
+
+    private static RequestConfig requestConfig = null;
+
+    static {
+        //设置请求和传输时间
+        requestConfig = RequestConfig.custom().setSocketTimeout(2000).setConnectTimeout(2000).build();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(httpGet("http://httpbin.org/gett", null));
+    }
+
+
+    /**
+     * httpGet请求
+     *
+     * @param: params是k=v形式
+     * @Author: by@Deng
+     * @Date: 2019-07-07 09:26
+     */
+    public static String httpGet(String url, Map<String, String> paramMap) {
+
+        if (StringUtils.isEmpty(url)) return null;
+
+        CloseableHttpClient client = HttpClients.createDefault();
+        CloseableHttpResponse response = null;
+
+        try {
+
+            // 创建uri
+            URIBuilder builder = new URIBuilder(url);
+            if (paramMap != null) {
+                for (String key : paramMap.keySet()) {
+                    builder.addParameter(key, paramMap.get(key));
+                }
+            }
+            URI uri = builder.build();
+
+            //todo 编码问题
+            //todo 代理问题
+            //todo 重试机制问题
+
+            //发送get请求
+            HttpGet request = new HttpGet(uri);
+            request.setConfig(requestConfig);
+
+            response = client.execute(request);
+
+            //请求发送成功，并得到响应
+            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+
+                //读取服务器返回过来的json字符串数据
+                HttpEntity entity = response.getEntity();
+
+                return EntityUtils.toString(entity, Const.CHARSET_UTF8);
+            } else {
+                logger.error("get请求提交失败:" + url);
+            }
+        } catch (Exception e) {
+            logger.error("get请求提交失败:" + url, e);
+        } finally {
+
+            try {
+                if (response != null) response.close();
+                client.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * 返回json对象
+     *
+     * @Author: by@Deng
+     * @Date: 2019-07-07 09:36
+     */
+    public static <T> T httpGet(String url, Map<String, String> paramMap, Class<T> c) {
+
+        String retUrl = httpGet(url, paramMap);
+        if (StringUtils.isNotEmpty(retUrl)) return JSONObject.parseObject(retUrl, c);
+
+        return null;
+    }
+
+
+    /**
+     * post请求
+     *
+     * @Author: by@Deng
+     * @Date: 2019-07-07 10:06
+     */
+    public static String doPost(String url, Map<String, String> param) {
+
+        // 创建Httpclient对象
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        CloseableHttpResponse response = null;
+
+        try {
+            // 创建Http Post请求
+            HttpPost httpPost = new HttpPost(url);
+            // 创建参数列表
+            if (param != null) {
+                List<NameValuePair> paramList = new ArrayList<>();
+                for (String key : param.keySet()) {
+                    paramList.add(new BasicNameValuePair(key, param.get(key)));
+                }
+                // 模拟表单
+                UrlEncodedFormEntity entity = new UrlEncodedFormEntity(paramList);
+                httpPost.setEntity(entity);
+            }
+            // 执行http请求
+            response = httpClient.execute(httpPost);
+            return EntityUtils.toString(response.getEntity(), Const.CHARSET_UTF8);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (response != null) response.close();
+                httpClient.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+    }
+
+
+    public static String doPostJson(String url, String json) {
+        // 创建Httpclient对象
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        CloseableHttpResponse response = null;
+        String resultString = "";
+        try {
+            // 创建Http Post请求
+            HttpPost httpPost = new HttpPost(url);
+            // 创建请求内容
+            StringEntity entity = new StringEntity(json, ContentType.APPLICATION_JSON);
+            httpPost.setEntity(entity);
+            // 执行http请求
+            response = httpClient.execute(httpPost);
+            resultString = EntityUtils.toString(response.getEntity(), "utf-8");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                response.close();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return resultString;
+    }
 
 
     /**
@@ -46,7 +238,7 @@ public class HttpClientUtils {
             }*/
 
             //定义 BufferedReader输入流来读取URL的响应
-            if(connection.getInputStream()!=null){
+            if (connection.getInputStream() != null) {
                 in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String line;
                 while ((line = in.readLine()) != null) {

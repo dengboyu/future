@@ -1,6 +1,6 @@
 package by.future.servicebiz.flink.wordcount;
 
-import by.future.common.utils.StringUtil;
+import by.future.common.utils.StringUtils;
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.ExecutionEnvironment;
@@ -8,7 +8,6 @@ import org.apache.flink.api.java.operators.DataSource;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.util.Collector;
 import org.springframework.stereotype.Service;
 
@@ -79,7 +78,7 @@ public class FlinkInstance {
         text.flatMap((String value,Collector<String> out)->{
             String[] tokenStr  = value.split(",");
             for(String token:tokenStr){
-                if(StringUtil.isNotEmpty(token)){
+                if(StringUtils.isNotEmpty(token)){
                     out.collect(token);
                 }
             }

@@ -1,12 +1,15 @@
 package by.future.web.test.springboot;
 
 
+import by.future.common.exception.ByException;
 import by.future.common.utils.TimeUtils;
 import by.future.servicebiz.flink.wordcount.FlinkInstance;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -22,6 +25,8 @@ import java.util.Date;
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ServiceTest {
+
+    Logger logger = LoggerFactory.getLogger(ServiceTest.class);
 
     @Test
     public void tesFor(){
@@ -71,10 +76,7 @@ public class ServiceTest {
     @Test
     public void testData() throws Exception {
 
-//        FlinkInstance.getStreamInstance();
-
-        Date date = DateUtils.parseDate("2019-08-07 08:20", TimeUtils.PATTERNS);
-        System.out.println(date);
+        logger.info("试试");
 
     }
 
