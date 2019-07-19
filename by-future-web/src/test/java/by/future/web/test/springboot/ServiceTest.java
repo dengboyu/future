@@ -66,6 +66,10 @@ public class ServiceTest {
     @Test
     public void testData(){
 
+        Object a = "192.168.1.1";
+        Object b = "192.168.1.2";
+        System.out.println(a.hashCode());
+        System.out.println(b.hashCode());
 
 
     }
