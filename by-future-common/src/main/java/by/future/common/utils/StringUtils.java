@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
  * @Author：by@Deng
  * @Date：2019/3/17 11:30
  */
-public class StringUtil extends org.apache.commons.lang3.StringUtils {
+public class StringUtils extends org.apache.commons.lang3.StringUtils {
 
 
     /**

@@ -1,6 +1,7 @@
 package by.future.web.test.springboot;
 
 
+import by.future.entity.config.BeanConfig;
 import by.future.entity.test.PersonTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +11,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -257,6 +260,9 @@ public class WebTest {
 //        EntityWrapper<PersonTest> entityWrapper = JSONUtils.getEntityWrapper(test, PersonTest.class);
 //        System.out.println(entityWrapper);
 //        System.out.println(entityWrapper.getEntityWrapper().get("dm_vincent"));
+
+        Map<String,String> map = new HashMap<>();
+        map.put("ds","ds");
 
     }
 

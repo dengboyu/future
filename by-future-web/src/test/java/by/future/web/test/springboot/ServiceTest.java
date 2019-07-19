@@ -1,13 +1,22 @@
 package by.future.web.test.springboot;
 
 
+import by.future.common.exception.ByException;
+import by.future.common.utils.TimeUtils;
+import by.future.servicebiz.flink.wordcount.FlinkInstance;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.util.Date;
 
 /**
  * @Author：by@Deng
@@ -17,6 +26,7 @@ import java.text.NumberFormat;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ServiceTest {
 
+    Logger logger = LoggerFactory.getLogger(ServiceTest.class);
 
     @Test
     public void tesFor(){
@@ -62,16 +72,5 @@ public class ServiceTest {
 
     }
 
-
-    @Test
-    public void testData(){
-
-        Object a = "192.168.1.1";
-        Object b = "192.168.1.2";
-        System.out.println(a.hashCode());
-        System.out.println(b.hashCode());
-
-
-    }
 
 }

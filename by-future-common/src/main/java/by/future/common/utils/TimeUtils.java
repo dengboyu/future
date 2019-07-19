@@ -11,6 +11,16 @@ import java.util.*;
  */
 public class TimeUtils {
 
+    public static final String yyyyMMddReal = "yyyyMMdd";
+    public static final String yyyyMMdd = "yyyy-MM-dd";
+    public static final String yyyyMMddHHmm = "yyyy-MM-dd HH:mm";
+    public static final String yyyyMMddHHmmss = "yyyy-MM-dd HH:mm:ss";
+    public static final String yyyyMMddHHmmssss = "yyyy-MM-dd HH:mm:ss.ss";
+    public static final String yyyyMMddHHmmsssssss = "yyyy-MM-dd HH:mm:ss.ss.sss";
+
+    public static final String[] PATTERNS = {yyyyMMdd,yyyyMMddHHmm,yyyyMMddHHmmss,yyyyMMddReal,yyyyMMddHHmmssss,yyyyMMddHHmmsssssss};
+
+
 
     /**
      * 获取某个日期的开始时间
