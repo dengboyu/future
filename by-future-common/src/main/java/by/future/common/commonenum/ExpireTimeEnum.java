@@ -1,4 +1,4 @@
-package by.future.common.enumconst;
+package by.future.common.commonenum;
 
 /**
  * 失效时间枚举类

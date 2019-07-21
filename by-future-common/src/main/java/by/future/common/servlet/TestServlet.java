@@ -13,7 +13,7 @@ import java.io.IOException;
  * @author by@Deng
  * @create 2017-10-13 19:25
  */
-@WebServlet(name = "TestServlet", urlPatterns = "/TestServlet")
+@WebServlet(name = "TestServlet", urlPatterns = "/TestServlet",loadOnStartup=1)
 public class TestServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

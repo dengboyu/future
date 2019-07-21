@@ -1,7 +1,7 @@
 package by.future.common.proxy.responseProxy;
 
 import by.future.common.constant.Const;
-import by.future.common.enumconst.ResultEnum;
+import by.future.common.commonenum.ResultCodeEnum;
 import by.future.common.exception.ByException;
 import org.apache.commons.lang3.StringUtils;
 
@@ -61,7 +61,7 @@ public class GzipResponseProxy {
             }
             return null;
         } catch (Exception e) {
-            throw new ByException(ResultEnum.FAIL.getCode(), ResultEnum.FAIL.getMessage());
+            throw new ByException(ResultCodeEnum.FAIL.getCode(), ResultCodeEnum.FAIL.getMessage());
         }
     }
 

@@ -1,6 +1,6 @@
 package by.future.servicebiz.test.excel.demo;
 
-import by.future.common.enumconst.ResultEnum;
+import by.future.common.commonenum.ResultCodeEnum;
 import by.future.common.exception.ByException;
 import by.future.common.utils.ExportFileUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
@@ -147,7 +147,7 @@ public class Demo {
             out.flush();
             out.close();
         }catch(Exception e) {
-            throw new ByException(ResultEnum.FAIL.getCode(), ResultEnum.FAIL.getMessage());
+            throw new ByException(ResultCodeEnum.FAIL.getCode(), ResultCodeEnum.FAIL.getMessage());
         }
     }
 

@@ -1,4 +1,4 @@
-package by.future.common.enumconst;
+package by.future.common.commonenum;
 
 
 /**
@@ -7,7 +7,7 @@ package by.future.common.enumconst;
  * @Author：by@Deng
  * @Date：2018/11/29 14:40
  */
-public enum ResultEnum {
+public enum ResultCodeEnum {
 
     //系统类错误 SYSTEM_ 10000+
     //配置类错误 CONFIG_ 20000+
@@ -46,7 +46,7 @@ public enum ResultEnum {
     private final String message;
 
 
-    ResultEnum(int code, String message) {
+    ResultCodeEnum(int code, String message) {
         this.code = code;
         this.message = message;
     }

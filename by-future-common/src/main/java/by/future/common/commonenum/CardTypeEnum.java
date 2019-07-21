@@ -1,4 +1,4 @@
-package by.future.common.enumconst;
+package by.future.common.commonenum;
 
 import java.util.HashMap;
 import java.util.Map;

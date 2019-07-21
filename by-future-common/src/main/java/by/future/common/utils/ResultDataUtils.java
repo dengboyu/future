@@ -1,6 +1,6 @@
 package by.future.common.utils;
 
-import by.future.common.enumconst.ResultEnum;
+import by.future.common.commonenum.ResultCodeEnum;
 import by.future.common.structure.entity.ResultEntity;
 
 /**
@@ -18,8 +18,8 @@ public class ResultDataUtils {
      */
     public static ResultEntity success(Object data){
         ResultEntity resultData = new ResultEntity();
-        resultData.setCode(ResultEnum.SUCCESS.getCode());    //成功状态码返回0
-        resultData.setMessage(ResultEnum.SUCCESS.getMessage());  //提示信息
+        resultData.setCode(ResultCodeEnum.SUCCESS.getCode());    //成功状态码返回0
+        resultData.setMessage(ResultCodeEnum.SUCCESS.getMessage());  //提示信息
         resultData.setData(data);
 
         return resultData;

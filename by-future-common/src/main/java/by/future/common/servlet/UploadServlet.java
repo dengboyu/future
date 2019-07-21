@@ -1,7 +1,7 @@
 package by.future.common.servlet;
 
 import by.future.common.constant.Const;
-import by.future.common.enumconst.ResultEnum;
+import by.future.common.commonenum.ResultCodeEnum;
 import by.future.common.exception.ByException;
 import by.future.common.utils.FileUtils;
 import by.future.common.utils.UUIDUtils;
@@ -88,7 +88,7 @@ public class UploadServlet extends HttpServlet {
         }catch (FileUploadBase.FileSizeLimitExceededException e){
             response.getWriter().write("文件大小超出范围"); //超出文件大小报异常
         }catch (Exception e) {
-            throw new ByException(ResultEnum.FAIL.getCode(), ResultEnum.FAIL.getMessage());
+            throw new ByException(ResultCodeEnum.FAIL.getCode(), ResultCodeEnum.FAIL.getMessage());
         }
     }
 
