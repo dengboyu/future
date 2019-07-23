@@ -1,4 +1,4 @@
-package by.future.web.bean;
+package by.future.common.bean;
 
 
 import org.apache.commons.lang3.StringUtils;
