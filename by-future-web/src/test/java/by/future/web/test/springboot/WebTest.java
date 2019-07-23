@@ -5,8 +5,11 @@ import by.future.entity.config.BeanConfig;
 import by.future.entity.test.PersonTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.servlet.*;
@@ -262,7 +265,8 @@ public class WebTest {
 //        EntityWrapper<PersonTest> entityWrapper = JSONUtils.getEntityWrapper(test, PersonTest.class);
 //        System.out.println(entityWrapper);
 //        System.out.println(entityWrapper.getEntityWrapper().get("dm_vincent"));
-        
+
+
 
     }
 
