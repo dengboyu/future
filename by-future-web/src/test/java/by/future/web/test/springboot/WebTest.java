@@ -3,6 +3,7 @@ package by.future.web.test.springboot;
 
 import by.future.entity.config.BeanConfig;
 import by.future.entity.test.PersonTest;
+import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.BeanFactory;
@@ -265,6 +266,16 @@ public class WebTest {
 //        EntityWrapper<PersonTest> entityWrapper = JSONUtils.getEntityWrapper(test, PersonTest.class);
 //        System.out.println(entityWrapper);
 //        System.out.println(entityWrapper.getEntityWrapper().get("dm_vincent"));
+
+        PersonTest personTest = new PersonTest();
+
+        personTest.setAge(11);
+
+        PersonTest personTest1 = new PersonTest();
+        personTest1.setAge(11);
+
+        System.out.println(personTest.equals(personTest1));
+        System.out.println(personTest.hashCode()==personTest1.hashCode());
 
 
 
