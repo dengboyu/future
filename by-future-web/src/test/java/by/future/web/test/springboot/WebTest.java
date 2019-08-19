@@ -267,7 +267,7 @@ public class WebTest {
 //        System.out.println(entityWrapper);
 //        System.out.println(entityWrapper.getEntityWrapper().get("dm_vincent"));
 
-        PersonTest personTest = new PersonTest();
+        /*PersonTest personTest = new PersonTest();
 
         personTest.setAge(11);
 
@@ -275,7 +275,10 @@ public class WebTest {
         personTest1.setAge(11);
 
         System.out.println(personTest.equals(personTest1));
-        System.out.println(personTest.hashCode()==personTest1.hashCode());
+        System.out.println(personTest.hashCode()==personTest1.hashCode());*/
+
+        ThreadLocal threadLocal = null;
+
 
 
 
