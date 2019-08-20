@@ -52,7 +52,7 @@ public class HttpClientUtils {
     }
 
     public static void main(String[] args) {
-        System.out.println(httpGet("http://httpbin.org/gett", null));
+        System.out.println(httpGet("https://www.kaops.com/", null));
     }
 
 
@@ -110,7 +110,7 @@ public class HttpClientUtils {
                 client.close();
 
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.error("关闭error");
             }
         }
         return null;
