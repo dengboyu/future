@@ -26,10 +26,9 @@ public class PersonSingle {
         if (personSingle == null) {
             synchronized (PersonSingle.class){
                 if(personSingle ==null){
-                personSingle = new PersonSingle();
+                    personSingle = new PersonSingle();
                 }
             }
-
         }
         return personSingle;
     }

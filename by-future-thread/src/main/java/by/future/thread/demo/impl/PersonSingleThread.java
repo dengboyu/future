@@ -1,5 +1,6 @@
 package by.future.thread.demo.impl;
 
+import by.future.common.singleton.PersonDaemonSingle;
 import by.future.common.singleton.PersonSingle;
 
 /**
@@ -12,12 +13,19 @@ public class PersonSingleThread implements Runnable {
     public void run() {
 
         try {
-            Thread.sleep(800);
+            Thread.currentThread().sleep(800);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        PersonSingle personSingle = PersonSingle.getInstance();
-        System.out.println("获取到："+personSingle);
+        synchronized (PersonSingleThread.class){
+            try {
+                Thread.currentThread().sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            PersonSingle personSingle = PersonSingle.getInstance();
+            System.out.println("获取到："+personSingle);
+        }
     }
 }

@@ -2,10 +2,13 @@ package by.future.web.test.springboot;
 
 
 import by.future.common.cache.SafeBuffer;
+import by.future.common.singleton.PersonDaemonSingle;
 import by.future.common.utils.ThreadUtils;
+import by.future.servicebiz.thread.impl.ThreadLogImpl;
 import by.future.thread.demo.impl.PersonSingleThread;
 import by.future.thread.demo.impl.ThreadDemo;
 import by.future.thread.demo.impl.ThreadLocalTest;
+import org.apache.commons.lang3.RandomUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,9 +17,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @Author：by@Deng
@@ -116,18 +121,26 @@ public class ThreadTest {
     public void testThreadLocal() throws InterruptedException {
 
         ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
-
         for(int i=0;i<40;i++){
+
+//            Thread.sleep(100);
+
 //            executor.execute(new ThreadLocalTest());
-            executor.execute(new PersonSingleThread());
+//            executor.execute(new PersonSingleThread());
+
+
+//            String name = RandomUtils.nextInt(0,2)==1?"logAImpl":"logBImpl";
+//            executor.execute(new ThreadLogImpl(name));
+
         }
+
+
 
         /*Thread thread1 = new Thread(new ThreadLocalTest());
         Thread thread2 = new Thread(new ThreadLocalTest());
 
         thread1.start();
         thread2.start();*/
-
 
         Thread.sleep(5000);
 

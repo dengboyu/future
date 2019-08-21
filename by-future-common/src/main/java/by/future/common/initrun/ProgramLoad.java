@@ -1,6 +1,7 @@
 package by.future.common.initrun;
 
 
+import by.future.common.singleton.PersonDaemonSingle;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
@@ -16,5 +17,6 @@ public class ProgramLoad implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("项目启动后被加载了");
+        PersonDaemonSingle.getInstance();
     }
 }
