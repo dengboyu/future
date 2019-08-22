@@ -1,4 +1,4 @@
-package by.future.thread.entity;
+package by.future.servicebiz.thread.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import org.springframework.stereotype.Component;

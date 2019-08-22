@@ -1,4 +1,4 @@
-package by.future.thread.demo.impl;
+package by.future.servicebiz.thread.demo.impl;
 
 /**
  * @author by@Deng

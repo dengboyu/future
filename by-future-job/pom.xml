@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>by-future-thread</artifactId>
+            <artifactId>by-future-dal</artifactId>
         </dependency>
 
         <!--quartz定时器jar包-->

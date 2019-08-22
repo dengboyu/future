@@ -19,9 +19,8 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>by-future-thread</artifactId>
+            <artifactId>by-future-dal</artifactId>
         </dependency>
-
 
         <dependency>
             <groupId>com.alibaba.jstorm</groupId>

@@ -2,26 +2,17 @@ package by.future.web.test.springboot;
 
 
 import by.future.common.cache.SafeBuffer;
-import by.future.common.singleton.PersonDaemonSingle;
 import by.future.common.utils.ThreadUtils;
-import by.future.servicebiz.thread.impl.ThreadLogImpl;
-import by.future.thread.demo.impl.PersonSingleThread;
-import by.future.thread.demo.impl.ThreadDemo;
-import by.future.thread.demo.impl.ThreadLocalTest;
-import org.apache.commons.lang3.RandomUtils;
+import by.future.servicebiz.thread.demo.impl.ThreadDemo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
-import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @Author：by@Deng

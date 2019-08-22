@@ -13,7 +13,6 @@
     <modules>
         <module>by-future-common</module>
         <module>by-future-entity</module>
-        <module>by-future-thread</module>
         <module>by-future-service</module>
         <module>by-future-service-biz</module>
         <module>by-future-dal</module>
@@ -70,13 +69,6 @@
                 <artifactId>by-future-service-biz</artifactId>
                 <version>1.0.0</version>
             </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>by-future-thread</artifactId>
-                <version>1.0.0</version>
-            </dependency>
-
 
             <!--springboot模块，充当继承父parent作用-->
             <dependency>

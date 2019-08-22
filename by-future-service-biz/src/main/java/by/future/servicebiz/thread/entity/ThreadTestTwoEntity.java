@@ -1,4 +1,4 @@
-package by.future.thread.entity;
+package by.future.servicebiz.thread.entity;
 
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package by.future.thread.demo;
+package by.future.servicebiz.thread.demo;
 
 
 /**

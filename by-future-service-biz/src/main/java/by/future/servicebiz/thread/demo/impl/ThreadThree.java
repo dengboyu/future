@@ -1,7 +1,7 @@
-package by.future.thread.demo.impl;
+package by.future.servicebiz.thread.demo.impl;
 
 
-import by.future.thread.demo.IThreadTwo;
+import by.future.servicebiz.thread.demo.IThreadTwo;
 import org.springframework.stereotype.Service;
 
 /**

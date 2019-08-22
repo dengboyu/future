@@ -1,4 +1,4 @@
-package by.future.servicebiz.demo.callback;
+package by.future.servicebiz.callback;
 
 /**
  * 按钮--演示回调示例

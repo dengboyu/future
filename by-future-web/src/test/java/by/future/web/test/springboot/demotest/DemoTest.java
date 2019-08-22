@@ -1,6 +1,6 @@
 package by.future.web.test.springboot.demotest;
 
-import by.future.servicebiz.demo.callback.Button;
+import by.future.servicebiz.callback.Button;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

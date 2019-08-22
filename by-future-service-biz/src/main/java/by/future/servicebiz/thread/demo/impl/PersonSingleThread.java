@@ -1,6 +1,5 @@
-package by.future.thread.demo.impl;
+package by.future.servicebiz.thread.demo.impl;
 
-import by.future.common.singleton.PersonDaemonSingle;
 import by.future.common.singleton.PersonSingle;
 
 /**
