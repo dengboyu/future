@@ -1,6 +1,7 @@
 package by.future.web.test.springboot;
 
 
+import backtype.storm.command.list;
 import by.future.common.exception.ByException;
 import by.future.common.utils.TimeUtils;
 import by.future.servicebiz.flink.wordcount.FlinkInstance;
@@ -14,10 +15,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.lang.annotation.Annotation;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Author：by@Deng
@@ -67,9 +70,33 @@ public class ServiceTest {
     public void testOOM(){
         //简单测试一下outOfMemory，向内存申请了4G的内存空间
         //因为内存没这么大，所以报内存溢出，1个int占用4个字节，B：字节
-        int[] arr = new int[1024 * 1024 *1024];
+//        int[] arr = new int[1024 * 1024 *1024];
 
-        System.out.println(arr);
+//        int[] arr = new int[1024 * 1024];
+
+//        System.out.println(arr);
+
+        ArrayList<int[]> list = new ArrayList();
+
+        for(int i =0;i<1000;i++){
+            int[] arr = new int[1024 * 1024];
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(i);
+            list.add(arr);
+        }
+
+        System.out.println("完事了");
+
+    }
+
+
+    @Test
+    public void testOther(){
+
 
 
     }
