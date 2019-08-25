@@ -67,7 +67,6 @@ public class GzipResponseProxy {
 
 }
 
-
 class MyServletOutputStream extends ServletOutputStream {
 
     private ByteArrayOutputStream byteArrayOutputStream;

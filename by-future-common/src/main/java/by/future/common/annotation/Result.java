@@ -1,5 +1,7 @@
 package by.future.common.annotation;
 
+import jdk.nashorn.internal.objects.annotations.Function;
+
 import java.lang.annotation.*;
 
 /**
@@ -11,5 +13,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Inherited
-public @interface Result {
+public @interface Result{
 }

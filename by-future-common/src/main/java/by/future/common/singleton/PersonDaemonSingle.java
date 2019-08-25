@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class PersonDaemonSingle {
 
-    private static PersonDaemonSingle personDamonSingle;
+    private static volatile PersonDaemonSingle personDamonSingle = null;
     private Thread daemonThread;
 
     private PersonDaemonSingle() {

@@ -60,4 +60,12 @@ public enum ResultCodeEnum {
         return message;
     }
 
+    public static ResultCodeEnum getInstance(int value){
+        for(ResultCodeEnum resultCodeEnum:ResultCodeEnum.values()){
+            if(resultCodeEnum.getCode() ==value){
+                return resultCodeEnum;
+            }
+        }
+        return null;
+    }
 }
