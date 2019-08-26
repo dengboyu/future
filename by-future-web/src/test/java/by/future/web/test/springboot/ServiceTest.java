@@ -1,12 +1,6 @@
 package by.future.web.test.springboot;
 
 
-import backtype.storm.command.list;
-import by.future.common.exception.ByException;
-import by.future.common.utils.TimeUtils;
-import by.future.servicebiz.flink.wordcount.FlinkInstance;
-import org.apache.commons.lang3.time.DateFormatUtils;
-import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -14,13 +8,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.annotation.Resource;
-import java.lang.annotation.Annotation;
+import java.io.File;
 import java.math.BigDecimal;
+import java.nio.file.FileSystem;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Properties;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @Author：by@Deng
@@ -91,12 +87,29 @@ public class ServiceTest {
 
         System.out.println("完事了");
 
-    }
+        Integer a = new Integer(400);
+        Integer b = new Integer(500);
+        Integer c = new Integer(600);
 
+        AtomicReference<Integer> ar = new AtomicReference();
+        ar.set(a);
+        System.out.println(a.intValue());
+        ar.compareAndSet(c, b);
+        System.out.println(ar.get().intValue());
+
+    }
 
     @Test
     public void testOther(){
 
+        System.load("//Users//by//Desktop//file");
+//        System.out.println(System.getProperty("name"));
+//        System.out.println();
+        System.out.println(System.getProperty("file.base"));
+
+//        System.load("");
+
+//        File file = new File()
 
 
     }
