@@ -1,6 +1,8 @@
 package by.future.common.utils;
 
 
+import com.google.common.collect.MapDifference;
+import com.google.common.collect.Maps;
 import org.apache.commons.collections4.map.HashedMap;
 import org.apache.commons.lang3.StringUtils;
 
@@ -27,9 +29,9 @@ public class MapUtils {
      * @Date：2018/5/4 17:58
      */
     public static <K, V extends Comparable<? super V>> Map<K, V> sortByKey(Map<K, V> map) {
-        List<Map.Entry<K, V>> list = new LinkedList<>(map.entrySet());
+        List<Map.Entry<K, V>> list = new LinkedList<>();
 
-        Collections.sort(list,(o1,o2)-> o1.getKey().toString().compareTo(o2.getKey().toString()));
+        Collections.sort(list, Comparator.comparing(o -> o.getKey().toString()));
 
         Map<K, V> result = new LinkedHashMap<>();
         for (Map.Entry<K, V> entry : list) {
@@ -47,7 +49,7 @@ public class MapUtils {
      */
     public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
         List<Map.Entry<K, V>> list = new LinkedList<>(map.entrySet());
-        Collections.sort(list, (o1,o2)-> o1.getKey().toString().compareTo(o2.getKey().toString()));
+        Collections.sort(list, Comparator.comparing(o -> o.getKey().toString()));
 
         Map<K, V> result = new LinkedHashMap<>();
         for (Map.Entry<K, V> entry : list) {
@@ -178,7 +180,7 @@ public class MapUtils {
             List<Field> infoIds = Arrays.asList(fields);
 
             // 对所有传入参数按照字段名的 ASCII 码从小到大排序（字典序）
-            Collections.sort(infoIds, (o1,o2)-> o1.getName().compareTo(o2.getName()));
+            Collections.sort(infoIds, Comparator.comparing(Field::getName));
 
             // 构造URL 键值对的格式
             StringBuilder buf = new StringBuilder();
@@ -222,7 +224,7 @@ public class MapUtils {
             List<Field> infoIds = Arrays.asList(fields);
 
             // 对所有传入参数按照字段名的 ASCII 码从小到大排序（字典序）
-            Collections.sort(infoIds, (o1,o2)-> o1.getName().compareTo(o2.getName()));
+            Collections.sort(infoIds, Comparator.comparing(Field::getName));
 
             // 构造URL 键值对的格式
             StringBuilder buf = new StringBuilder();
@@ -255,5 +257,26 @@ public class MapUtils {
         }
         return buff;
     }
+
+
+    /**
+     * map的key变化
+     *
+     * @Author: by@Deng
+     * @Date: 2019/8/31 7:53 上午
+     */
+    public void testMap(){
+        Map<String,String> map = new HashMap<>();
+        map.put("aa","aaa");
+        map.put("bb","bbb");
+
+        Map<String,String> map1 = new HashMap<>();
+        map1.put("aa","a");
+        map1.put("cc","ccc");
+
+        MapDifference<String,String> diff =  Maps.difference(map,map1);
+        System.out.println(diff);
+    }
+
 
 }

@@ -1,6 +1,8 @@
 package by.future.web.test.springboot;
 
 
+import com.google.common.collect.MapDifference;
+import com.google.common.collect.Maps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -12,9 +14,7 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.nio.file.FileSystem;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Properties;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -102,16 +102,25 @@ public class ServiceTest {
     @Test
     public void testOther(){
 
-        System.load("//Users//by//Desktop//file");
+//        System.load("//Users//by//Desktop//file");
 //        System.out.println(System.getProperty("name"));
 //        System.out.println();
-        System.out.println(System.getProperty("file.base"));
+//        System.out.println(System.getProperty("file.base"));
 
 //        System.load("");
 
 //        File file = new File()
 
+        Map<String,String> map = new HashMap<>();
+        map.put("aa","aaa");
+        map.put("bb","bbb");
 
+        Map<String,String> map1 = new HashMap<>();
+        map1.put("aa","a");
+        map1.put("cc","ccc");
+
+        map1.putAll(map);
+        System.out.println(map1);
     }
 
 
