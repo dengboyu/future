@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -61,9 +63,16 @@ public class UserLogin {
      * @Date: 2019-03-23 00:57
      */
     @GetMapping("test")
-    public String test(HttpServletResponse response){
+    public String test(@RequestParam Map<String,String> requestMap, HttpServletResponse response){
 
+        /*if("aa".equalsIgnoreCase(requestMap.get("aa"))){
+            List<Integer> list = new ArrayList<>();
+            for(int i=0;i<Integer.MAX_VALUE;i++){
+                list.add(i);
+            }
+        }else{
 
+        }*/
 
         return "success";
     }

@@ -23,7 +23,7 @@ public class PersonDaemonSingle {
             while (!Thread.currentThread().isInterrupted()){
                 System.out.println("我是后台线程,不停的做事");
                 try {
-                    TimeUnit.SECONDS.sleep(3);
+                    TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

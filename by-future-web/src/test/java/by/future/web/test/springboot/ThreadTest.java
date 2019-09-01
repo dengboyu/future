@@ -11,8 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 /**
  * @Author：by@Deng
@@ -21,6 +20,38 @@ import java.util.concurrent.Future;
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ThreadTest {
+
+    /**
+     * 多线程qps的计算问题
+     *
+     * @Author: by@Deng
+     * @Date: 2019/9/1 10:42 下午
+     */
+    @Test
+    public void testConcurrent() throws Exception{
+
+        Semaphore semaphore = new Semaphore(10);
+        ExecutorService executorService = Executors.newFixedThreadPool(20);
+
+        for(int i = 0;i<1000;i++){
+            int a = i;
+            executorService.execute(()->{
+
+                try {
+
+                    semaphore.acquire();
+                    TimeUnit.MILLISECONDS.sleep(200);
+                    System.out.println(a);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }finally {
+                    semaphore.release();
+                }
+            });
+        }
+
+        Thread.sleep(20000);
+    }
 
 
     @Test
@@ -136,6 +167,8 @@ public class ThreadTest {
         Thread.sleep(5000);
 
     }
+
+
 
 
 

@@ -72,10 +72,10 @@ public class ServiceTest {
 
 //        System.out.println(arr);
 
-        ArrayList<int[]> list = new ArrayList();
+        ArrayList<String[]> list = new ArrayList();
 
         for(int i =0;i<1000;i++){
-            int[] arr = new int[1024 * 1024];
+            String[] arr = new String[1024 * 1024];
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
