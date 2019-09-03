@@ -1,6 +1,8 @@
 package by.future.common.utils;
 
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * 随机数工具类
  *
@@ -8,6 +10,8 @@ package by.future.common.utils;
  * @Date：2018/12/10 10:30
  */
 public class RandomUtils {
+
+    private static final ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
 
 
     /**
@@ -17,7 +21,11 @@ public class RandomUtils {
      * @Date：2018/12/10 10:31
      */
     public static long generateRandomNum(int length){
-        return (long)((Math.random()*9+1)*Math.pow(10,length));
+        StringBuffer sb = new StringBuffer();
+        for(int i =0;i<length;i++){
+            sb.append(threadLocalRandom.nextInt(9));
+        }
+        return Long.valueOf(sb.toString());
     }
 
 
