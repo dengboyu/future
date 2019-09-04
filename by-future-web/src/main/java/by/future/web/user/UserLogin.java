@@ -73,8 +73,9 @@ public class UserLogin {
         }else{
 
         }*/
-
-        return "success";
+        String success = "success";
+        if(requestMap.get("userId")!=null) success = requestMap.get("userId");
+        return success;
     }
 
 }

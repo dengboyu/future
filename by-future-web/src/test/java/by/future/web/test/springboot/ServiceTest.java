@@ -2,6 +2,8 @@ package by.future.web.test.springboot;
 
 
 import by.future.common.utils.RandomUtils;
+import by.future.web.test.springboot.jstorm.CallAbleTest;
+import ch.qos.logback.core.util.ExecutorServiceUtil;
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
 import org.junit.Test;
@@ -16,6 +18,10 @@ import java.math.BigDecimal;
 import java.nio.file.FileSystem;
 import java.text.NumberFormat;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -103,7 +109,7 @@ public class ServiceTest {
     @Test
     public void testOther(){
 
-        System.out.println(RandomUtils.generateRandomNum(16));
+
 
 
     }
