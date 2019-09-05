@@ -109,7 +109,12 @@ public class ServiceTest {
     @Test
     public void testOther(){
 
+        byte a = 3;
+        short b = 2;
 
+        byte c = 1;
+
+        System.out.println(a == c+b);
 
 
     }
