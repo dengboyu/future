@@ -114,7 +114,9 @@ public class ServiceTest {
 
         byte c = 1;
 
-        System.out.println(a == c+b);
+//        System.out.println(a == c+b);
+        System.out.println( (1>>31));
+        System.out.println(Integer.MAX_VALUE);
 
 
     }

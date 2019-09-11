@@ -1,6 +1,8 @@
 package by.future.common.utils;
 
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
@@ -27,6 +29,26 @@ public class CommonUtils {
     }
 
 
+    /**
+     * shard平均分配某个字段
+     *
+     * @Author: by@Deng
+     * @Date: 2019/9/11 7:40 下午
+     */
+    public static int shardCore(int shardCount, String shardField) {
+        long code = 0;
+        if (StringUtils.isNotEmpty(shardField)) {
+            for (int i = 0; i < shardField.length(); i += 2) {
+                code *= 16777619;
+                code &= 0xffffffffL; // Convert to uint in .Net
+                code ^= shardField.charAt(i);
+            }
+        }
+
+        int shardId = (int) (code % shardCount) + 1;
+
+        return shardId;
+    }
 
 
 }
