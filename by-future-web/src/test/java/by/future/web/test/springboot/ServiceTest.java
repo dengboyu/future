@@ -15,6 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.URL;
 import java.nio.file.FileSystem;
 import java.text.NumberFormat;
 import java.util.*;
@@ -109,14 +112,22 @@ public class ServiceTest {
     @Test
     public void testOther(){
 
-        byte a = 3;
-        short b = 2;
+        String a = "as";
+        String b = "sfdaf";
+        String c= "saa";
 
-        byte c = 1;
+        String cc = a+b;
+        String cd = b+c;
 
-//        System.out.println(a == c+b);
-        System.out.println( (1>>31));
-        System.out.println(Integer.MAX_VALUE);
+        System.out.println(cc);
+        System.out.println(cd);
+
+        Object object = null;
+
+        System.out.println(Long.MAX_VALUE);
+        System.out.println("数量是："+ (long)(2<<31));
+
+
 
 
     }
