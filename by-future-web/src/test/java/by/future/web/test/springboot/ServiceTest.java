@@ -1,11 +1,6 @@
 package by.future.web.test.springboot;
 
 
-import by.future.common.utils.RandomUtils;
-import by.future.web.test.springboot.jstorm.CallAbleTest;
-import ch.qos.logback.core.util.ExecutorServiceUtil;
-import com.google.common.collect.MapDifference;
-import com.google.common.collect.Maps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -13,19 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.io.File;
 import java.math.BigDecimal;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.URL;
-import java.nio.file.FileSystem;
 import java.text.NumberFormat;
-import java.util.*;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -111,25 +96,22 @@ public class ServiceTest {
 
     @Test
     public void testOther(){
+        methodTwo();
+        methodThree();
 
-        String a = "as";
-        String b = "sfdaf";
-        String c= "saa";
+        System.gc();
 
-        String cc = a+b;
-        String cd = b+c;
-
-        System.out.println(cc);
-        System.out.println(cd);
-
-        Object object = null;
-
-        System.out.println(Long.MAX_VALUE);
-        System.out.println("数量是："+ (long)(2<<31));
+    }
 
 
+    @Test
+    public void methodTwo(){
+        System.out.println("11");
+    }
 
-
+    @Test
+    public void methodThree(){
+        System.out.println("22");
     }
 
 

@@ -16,7 +16,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration   //需要启动配置文件
 public class SpringTest {
 
-
     @Test
     public void test(){
 
