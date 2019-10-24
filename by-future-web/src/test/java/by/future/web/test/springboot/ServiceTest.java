@@ -12,6 +12,8 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author：by@Deng
@@ -106,7 +108,12 @@ public class ServiceTest {
 
     @Test
     public void methodTwo(){
-        System.out.println("11");
+
+        ReadWriteLock readWriteLock;
+        ReentrantLock reentrantLock;
+        Thread thread;
+
+
     }
 
     @Test

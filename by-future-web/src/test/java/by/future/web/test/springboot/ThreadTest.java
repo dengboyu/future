@@ -3,7 +3,6 @@ package by.future.web.test.springboot;
 
 import by.future.common.cache.SafeBuffer;
 import by.future.common.utils.ThreadUtils;
-import by.future.servicebiz.thread.demo.impl.ThreadDemo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -113,7 +112,7 @@ public class ThreadTest {
         List<Future> futureList = new ArrayList<>();
         for(int i=0;i<20;i++){
 
-            executor.execute(new ThreadDemo());
+//            executor.execute(new ThreadDemo());
 
 //            Future<Integer> f= executor.submit(new ThreadCallableDemo(i));
 //            futureList.add(f);
@@ -142,21 +141,28 @@ public class ThreadTest {
     @Test
     public void testThreadLocal() throws InterruptedException {
 
+//        CountDownLatch countDownLatch = new CountDownLatch(40);
         ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
         for(int i=0;i<40;i++){
 
 //            Thread.sleep(100);
+            executor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(1000);
+                        System.out.println("遇见最好的自己");
 
-//            executor.execute(new ThreadLocalTest());
-//            executor.execute(new PersonSingleThread());
-
-
-//            String name = RandomUtils.nextInt(0,2)==1?"logAImpl":"logBImpl";
-//            executor.execute(new ThreadLogImpl(name));
-
+//                        countDownLatch.countDown();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
 
-
+//        countDownLatch.await();
+        System.out.println("最终");
 
         /*Thread thread1 = new Thread(new ThreadLocalTest());
         Thread thread2 = new Thread(new ThreadLocalTest());
@@ -164,7 +170,7 @@ public class ThreadTest {
         thread1.start();
         thread2.start();*/
 
-        Thread.sleep(5000);
+//        Thread.sleep(5000);
 
     }
 
