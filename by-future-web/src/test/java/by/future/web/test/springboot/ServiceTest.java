@@ -118,7 +118,9 @@ public class ServiceTest {
 
     @Test
     public void methodThree(){
-        System.out.println("22");
+
+
+
     }
 
 
