@@ -1,10 +1,14 @@
 package by.future.common.utils;
 
 import org.apache.axis.encoding.Base64;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.security.AlgorithmParameters;
+import java.security.Security;
 
 public class AESUtils {
 
@@ -64,6 +68,38 @@ public class AESUtils {
 		byte[] encrypted = Base64.decode(enc);
 		byte[] decrypted = cipher.doFinal(encrypted);
 		return new String(decrypted);
+	}
+
+
+	/**
+	 * 小程序AES解密 PKCS7Padding
+	 *
+	 * @Author：by@Deng
+	 * @Date：2018/6/26 13:32
+	 */
+	public static String decryptApplet(String content, String key,String iv) throws BadPaddingException {
+		try {
+			SecretKeySpec keySpec = new SecretKeySpec(org.apache.commons.codec.binary.Base64.decodeBase64(key), "AES");
+
+			AlgorithmParameters params = AlgorithmParameters.getInstance("AES");
+			params.init(new IvParameterSpec(org.apache.commons.codec.binary.Base64.decodeBase64(iv)));
+
+			byte[] decryptContent = org.apache.commons.codec.binary.Base64.decodeBase64(content);
+
+			Security.addProvider(new BouncyCastleProvider());
+			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
+			cipher.init(Cipher.DECRYPT_MODE, keySpec, params);
+
+			byte[] original = cipher.doFinal(decryptContent);
+
+			return new String(original, "utf-8");
+
+		}  catch (BadPaddingException badPaddingException){
+			throw badPaddingException;
+		} catch (Exception var8) {
+			return null;
+		}
+
 	}
 
 }
