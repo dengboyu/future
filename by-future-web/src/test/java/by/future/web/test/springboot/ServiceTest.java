@@ -1,6 +1,7 @@
 package by.future.web.test.springboot;
 
 
+import by.future.common.utils.IpUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -8,10 +9,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.servlet.ServletContextListener;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicStampedReference;
 
 /**
  * @Author：by@Deng
@@ -94,25 +97,18 @@ public class ServiceTest {
 
     }
 
+
+
     @Test
     public void testOther(){
-        methodTwo();
-        methodThree();
 
-        System.gc();
+        System.out.println(IpUtils.ipToLong("127.0.0.1"));
+        System.out.println(IpUtils.longToIP(1002323));
+        ServletContextListener
 
     }
 
 
-    @Test
-    public void methodTwo(){
-        System.out.println("11");
-    }
-
-    @Test
-    public void methodThree(){
-        System.out.println("22");
-    }
 
 
 }

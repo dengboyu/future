@@ -1,18 +1,18 @@
-package by.future;
+package by.future.common.test.lrucache;
 
 /**
  * @author by@Deng
  * @create 2019-08-10 21:49
  */
-public class ListNode {
+public class DoubleListNode {
+
+    private DoubleListNode preNode;
+    private DoubleListNode nextNode;
 
     private int key;
     private int value;
 
-    private ListNode preNode;
-    private ListNode nextNode;
-
-    public ListNode(int key, int value) {
+    public DoubleListNode(int key, int value) {
         this.key = key;
         this.value = value;
     }
@@ -33,19 +33,19 @@ public class ListNode {
         this.value = value;
     }
 
-    public ListNode getPreNode() {
+    public DoubleListNode getPreNode() {
         return preNode;
     }
 
-    public void setPreNode(ListNode preNode) {
+    public void setPreNode(DoubleListNode preNode) {
         this.preNode = preNode;
     }
 
-    public ListNode getNextNode() {
+    public DoubleListNode getNextNode() {
         return nextNode;
     }
 
-    public void setNextNode(ListNode nextNode) {
+    public void setNextNode(DoubleListNode nextNode) {
         this.nextNode = nextNode;
     }
 }

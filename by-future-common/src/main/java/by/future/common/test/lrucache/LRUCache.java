@@ -1,4 +1,4 @@
-package by.future;
+package by.future.common.test.lrucache;
 
 import java.util.HashMap;
 
@@ -11,9 +11,9 @@ public class LRUCache {
     private int capacity; //容量
     private int len;
 
-    private HashMap<Integer,ListNode> map = new HashMap<>();
-    private ListNode firstNode;
-    private ListNode lastNode;
+    private HashMap<Integer, DoubleListNode> map = new HashMap<>();
+    private DoubleListNode firstNode;
+    private DoubleListNode lastNode;
 
     public LRUCache(int capacity) {
         len = 0;
@@ -23,7 +23,7 @@ public class LRUCache {
     //获取元素
     public int get(int key){
         if(map.containsKey(key)){
-            ListNode listNode = map.get(key);
+            DoubleListNode listNode = map.get(key);
 
             //删除替换当前节点
             remove(listNode);
@@ -36,7 +36,7 @@ public class LRUCache {
     }
 
     //设置当前链表
-    public void setCurrentNode(ListNode listNode){
+    public void setCurrentNode(DoubleListNode listNode){
 
         listNode.setPreNode(null);
         listNode.setNextNode(firstNode);
@@ -57,7 +57,7 @@ public class LRUCache {
         if(map.containsKey(key)){
 
             //替换已存在
-            ListNode existListNode = map.get(key);
+            DoubleListNode existListNode = map.get(key);
             existListNode.setValue(value);
 
             //删除替换当前节点
@@ -66,7 +66,7 @@ public class LRUCache {
 
         }else{
 
-            ListNode listNode = new ListNode(key,value);
+            DoubleListNode listNode = new DoubleListNode(key,value);
             if(len < capacity){
                 setCurrentNode(listNode);
                 map.put(key,listNode);
@@ -89,11 +89,11 @@ public class LRUCache {
     }
 
     //删除元素
-    public void remove(ListNode listNode){
+    public void remove(DoubleListNode listNode){
 
-        ListNode currentList = listNode;
-        ListNode preNode = currentList.getPreNode();
-        ListNode nextNode = currentList.getNextNode();
+        DoubleListNode currentList = listNode;
+        DoubleListNode preNode = currentList.getPreNode();
+        DoubleListNode nextNode = currentList.getNextNode();
 
         if(preNode != null){
             preNode.setNextNode(nextNode);

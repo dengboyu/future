@@ -143,7 +143,9 @@ public class ThreadTest {
     public void testThreadLocal() throws InterruptedException {
 
         ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
-        for(int i=0;i<40;i++){
+
+
+//        for(int i=0;i<40;i++){
 
 //            Thread.sleep(100);
 
@@ -154,7 +156,7 @@ public class ThreadTest {
 //            String name = RandomUtils.nextInt(0,2)==1?"logAImpl":"logBImpl";
 //            executor.execute(new ThreadLogImpl(name));
 
-        }
+//        }
 
 
 
