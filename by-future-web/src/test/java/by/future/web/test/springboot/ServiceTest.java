@@ -12,8 +12,6 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author：by@Deng
@@ -99,7 +97,7 @@ public class ServiceTest {
     @Test
     public void testOther(){
         methodTwo();
-        methodThree();
+//        methodThree();
 
         System.gc();
 
@@ -109,9 +107,8 @@ public class ServiceTest {
     @Test
     public void methodTwo(){
 
-        ReadWriteLock readWriteLock;
-        ReentrantLock reentrantLock;
-        Thread thread;
+        System.out.println(System.getenv());
+        System.out.println(System.getProperty("os.name"));
 
 
     }
@@ -119,7 +116,8 @@ public class ServiceTest {
     @Test
     public void methodThree(){
 
-
+        Exception exception = new Exception();
+        StackTraceElement[] stackTraceElement = exception.getStackTrace();
 
     }
 

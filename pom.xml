@@ -291,23 +291,16 @@
 
     <build>
 
-        <!--<filters>-->
-            <!--<filter>by-future-dal/src/main/resources/config/application-${env}.properties</filter>-->
-        <!--</filters>-->
-        <resources>
-            <resource>
-                <directory>by-future-dal/src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-
         <plugins>
             <!-- 把springBoot项目打包为jar可执行包 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

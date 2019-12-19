@@ -80,7 +80,7 @@ public class MonitorSystemImpl implements IMonitorSystem {
 
             if (isSendMsg) {
 //                String smsContent = StringUtils.isNotEmpty(content)? content:String.format(monitor.getAlarmMessage(), DateUtils.formatDate("yyyy-MM-dd HH:mm", date), monitor.getRollingMinute(), monitor.getMonitorName(), account, monitor.getAlarmCountUnit(), operatorName, monitor.getMobileAlarmCount(), monitor.getAlarmCountUnit());
-//                outboundCallBiz.sendMarketingSMS("",monitor.getAlarmMobile(),smsContent+ "\n执行sql:" +  monitor.getMonitorSql(),PartnerNameType.zhixing);
+//                outboundCallBiz.sendMarketingSMS("",monitor.getAlarmMobile(),smsContent+ "\n执行sql:" +  monitor.getMonitorSql(),"");
             }
 
             //更新最后执行时间
