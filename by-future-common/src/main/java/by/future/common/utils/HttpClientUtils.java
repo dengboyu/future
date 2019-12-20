@@ -3,11 +3,9 @@ package by.future.common.utils;
 
 import by.future.common.constant.Const;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.axis.components.logger.LogFactory;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -20,16 +18,14 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.apache.poi.ss.formula.functions.T;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.spi.LoggerFactoryBinder;
 
 import java.io.*;
+import java.net.SocketException;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -101,7 +97,9 @@ public class HttpClientUtils {
             } else {
                 logger.error("get请求提交失败:" + url);
             }
-        } catch (Exception e) {
+        }catch (SocketException e){
+            logger.warn("请求超时");
+        }catch (Exception e) {
             logger.error("get请求提交失败:" + url, e);
         } finally {
 

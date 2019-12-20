@@ -14,7 +14,8 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.AtomicStampedReference;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author：by@Deng
@@ -104,11 +105,25 @@ public class ServiceTest {
 
         System.out.println(IpUtils.ipToLong("127.0.0.1"));
         System.out.println(IpUtils.longToIP(1002323));
-        ServletContextListener
 
     }
 
 
+    @Test
+    public void methodTwo(){
 
+        ReadWriteLock readWriteLock;
+        ReentrantLock reentrantLock;
+        Thread thread;
+
+
+    }
+
+    @Test
+    public void methodThree(){
+
+
+
+    }
 
 }
