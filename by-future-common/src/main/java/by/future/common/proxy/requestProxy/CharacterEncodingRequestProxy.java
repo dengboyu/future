@@ -1,7 +1,7 @@
 package by.future.common.proxy.requestProxy;
 
 
-import by.future.common.constant.Const;
+import by.future.entity.constant.SysConst;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +37,7 @@ public class CharacterEncodingRequestProxy {
                         String value = String.valueOf(method.invoke(request,args));
                         if(StringUtils.isEmpty(value)) return value;
 
-                        return new String(value.getBytes("ISO-8859-1"), Const.CHARSET_UTF8);
+                        return new String(value.getBytes("ISO-8859-1"), SysConst.CHARSET_UTF8);
                     }
                 }
 

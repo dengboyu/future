@@ -1,7 +1,7 @@
 package by.future.common.servlet;
 
-import by.future.common.constant.Const;
-import by.future.common.commonenum.ResultCodeEnum;
+import by.future.entity.constant.SysConst;
+import by.future.enums.commonenum.ResultCodeEnum;
 import by.future.common.exception.ByException;
 import by.future.common.utils.FileUtils;
 import by.future.common.utils.UUIDUtils;
@@ -42,7 +42,7 @@ public class UploadServlet extends HttpServlet {
             diskFileItemFactory.setRepository(new File(this.getServletContext().getRealPath("/WEB-INF/temp")));
 
             ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
-            servletFileUpload.setHeaderEncoding(Const.CHARSET_UTF8);  //解决上传文件名的中文乱码问题
+            servletFileUpload.setHeaderEncoding(SysConst.CHARSET_UTF8);  //解决上传文件名的中文乱码问题
             servletFileUpload.setProgressListener(new ProgressListener() {
                 @Override
                 public void update(long pBytesRead, long pContentLength, int i) {
@@ -58,7 +58,7 @@ public class UploadServlet extends HttpServlet {
                     //普通输入项
                     String name = fileItem.getFieldName();
                     String value = fileItem.getString();
-                    value = new String(value.getBytes("ISO-8859-1"),Const.CHARSET_UTF8);  //中文乱码问题
+                    value = new String(value.getBytes("ISO-8859-1"), SysConst.CHARSET_UTF8);  //中文乱码问题
                     System.out.println("key="+name+",value="+value);
                 }else{
                     String name = fileItem.getName();   //上传文件名称(不同浏览器上传名称不同)
