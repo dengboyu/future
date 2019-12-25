@@ -9,13 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.servlet.ServletContextListener;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author：by@Deng
@@ -102,6 +99,8 @@ public class ServiceTest {
 
     @Test
     public void testOther(){
+        methodTwo();
+//        methodThree();
 
         System.out.println(IpUtils.ipToLong("127.0.0.1"));
         System.out.println(IpUtils.longToIP(1002323));
@@ -112,9 +111,8 @@ public class ServiceTest {
     @Test
     public void methodTwo(){
 
-        ReadWriteLock readWriteLock;
-        ReentrantLock reentrantLock;
-        Thread thread;
+        System.out.println(System.getenv());
+        System.out.println(System.getProperty("os.name"));
 
 
     }
@@ -122,8 +120,10 @@ public class ServiceTest {
     @Test
     public void methodThree(){
 
-
+        Exception exception = new Exception();
+        StackTraceElement[] stackTraceElement = exception.getStackTrace();
 
     }
+
 
 }

@@ -42,7 +42,7 @@ public class ShortCodeUtils {
 
         String code="";
 
-        while (num > 62) {
+        while (num >= 62) {
             code = codeArr[(int)(num % 62)] + code;
             num = num/62;
         }
