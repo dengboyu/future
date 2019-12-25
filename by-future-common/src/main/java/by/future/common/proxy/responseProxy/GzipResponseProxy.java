@@ -1,7 +1,7 @@
 package by.future.common.proxy.responseProxy;
 
-import by.future.common.constant.Const;
-import by.future.common.commonenum.ResultCodeEnum;
+import by.future.entity.constant.SysConst;
+import by.future.enums.commonenum.ResultCodeEnum;
 import by.future.common.exception.ByException;
 import org.apache.commons.lang3.StringUtils;
 
@@ -23,7 +23,7 @@ public class GzipResponseProxy {
 
     private HttpServletResponse response;
     private ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-    private PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(byteArrayOutputStream, Const.CHARSET_UTF8));
+    private PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(byteArrayOutputStream, SysConst.CHARSET_UTF8));
 
     public GzipResponseProxy(HttpServletResponse response) throws UnsupportedEncodingException {
         this.response = response;

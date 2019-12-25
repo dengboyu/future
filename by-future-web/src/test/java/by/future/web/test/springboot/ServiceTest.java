@@ -107,8 +107,6 @@ public class ServiceTest {
     @Test
     public void methodTwo(){
 
-        System.out.println(System.getenv());
-        System.out.println(System.getProperty("os.name"));
 
 
     }

@@ -1,7 +1,7 @@
 package by.future.common.utils;
 
 
-import by.future.common.constant.Const;
+import by.future.entity.constant.SysConst;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
@@ -93,7 +93,7 @@ public class HttpClientUtils {
                 //读取服务器返回过来的json字符串数据
                 HttpEntity entity = response.getEntity();
 
-                return EntityUtils.toString(entity, Const.CHARSET_UTF8);
+                return EntityUtils.toString(entity, SysConst.CHARSET_UTF8);
             } else {
                 logger.error("get请求提交失败:" + url);
             }
@@ -157,7 +157,7 @@ public class HttpClientUtils {
             }
             // 执行http请求
             response = httpClient.execute(httpPost);
-            return EntityUtils.toString(response.getEntity(), Const.CHARSET_UTF8);
+            return EntityUtils.toString(response.getEntity(), SysConst.CHARSET_UTF8);
 
         } catch (Exception e) {
             e.printStackTrace();

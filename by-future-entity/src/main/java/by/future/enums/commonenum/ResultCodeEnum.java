@@ -1,4 +1,4 @@
-package by.future.common.commonenum;
+package by.future.enums.commonenum;
 
 
 /**

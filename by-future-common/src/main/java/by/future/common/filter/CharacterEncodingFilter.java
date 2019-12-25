@@ -1,7 +1,7 @@
 package by.future.common.filter;
 
 
-import by.future.common.constant.Const;
+import by.future.entity.constant.SysConst;
 import by.future.common.proxy.requestProxy.CharacterEncodingRequestProxy;
 
 import javax.servlet.*;
@@ -27,7 +27,7 @@ public class CharacterEncodingFilter implements Filter {
 
         String charset = filterConfig.getInitParameter("encoding");
         if(charset ==null) {
-            charset = Const.CHARSET_UTF8;
+            charset = SysConst.CHARSET_UTF8;
         }
 
         request.setCharacterEncoding(charset);

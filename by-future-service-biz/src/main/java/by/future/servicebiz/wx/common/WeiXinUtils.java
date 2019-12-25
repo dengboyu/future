@@ -1,6 +1,6 @@
 package by.future.servicebiz.wx.common;
 
-import by.future.common.constant.Const;
+import by.future.entity.constant.WxConst;
 import by.future.common.utils.HttpClientUtils;
 import by.future.common.utils.MapUtils;
 import by.future.common.utils.UUIDUtils;
@@ -88,7 +88,7 @@ public class WeiXinUtils {
      * @date 2017/11/8 下午2:39
      */
     public static WXSecretEntity getAccessToken(String appId, String appSecret){
-        Date loseTime = new Date((System.currentTimeMillis() + Const.LOSETIME));  //失效时间
+        Date loseTime = new Date((System.currentTimeMillis() + WxConst.LOSE_TIME));  //失效时间
 
         //访问accessToken接口地址
         String url="https://api.weixin.qq.com/cgi-bin/token";
@@ -153,7 +153,7 @@ public class WeiXinUtils {
     public static String getPrepayId(WXPayInfoEntity payInfoEntity, WXSecretEntity wxSecretEntity){
         try {
 
-            payInfoEntity.setNotify_url(Const.NOTIFY_URL);//回调地址为了处理业务
+            payInfoEntity.setNotify_url(WxConst.NOTIFY_URL);//回调地址为了处理业务
             payInfoEntity.setDevice_info("WEB");    //小程序、公众号相同
             payInfoEntity.setTrade_type("JSAPI");   //小程序、公众号相同
             payInfoEntity.setNonce_str(UUIDUtils.getUUID());   //随机串
@@ -304,7 +304,7 @@ public class WeiXinUtils {
      * @return
      */
     public static boolean checkSignature(String signature, String timestamp, String nonce) {
-        String[] arr = new String[] {Const.TOKEN, timestamp, nonce };
+        String[] arr = new String[] {WxConst.TOKEN, timestamp, nonce };
         // 将token、timestamp、nonce三个参数进行字典序排序
         if(null == arr || arr.length == 0){
             return false;

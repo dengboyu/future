@@ -1,6 +1,6 @@
 package by.future.servicebiz.test.excel.demo;
 
-import by.future.common.commonenum.ResultCodeEnum;
+import by.future.enums.commonenum.ResultCodeEnum;
 import by.future.common.exception.ByException;
 import by.future.common.utils.ExportFileUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;

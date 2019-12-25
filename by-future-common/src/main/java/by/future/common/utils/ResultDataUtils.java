@@ -1,6 +1,6 @@
 package by.future.common.utils;
 
-import by.future.common.commonenum.ResultCodeEnum;
+import by.future.enums.commonenum.ResultCodeEnum;
 import by.future.common.structure.entity.ResultEntity;
 
 /**

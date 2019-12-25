@@ -1,6 +1,6 @@
 package by.future.common.exception;
 
-import by.future.common.commonenum.ResultCodeEnum;
+import by.future.enums.commonenum.ResultCodeEnum;
 import by.future.common.structure.entity.ResultEntity;
 import by.future.common.utils.ResultDataUtils;
 import org.slf4j.Logger;
