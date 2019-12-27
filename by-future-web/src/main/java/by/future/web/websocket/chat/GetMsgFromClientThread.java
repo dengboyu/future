@@ -1,6 +1,6 @@
 package by.future.web.websocket.chat;
 
-import by.future.common.utils.TimeUtils;
+import by.future.entity.constant.SysConst;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
 import java.io.BufferedReader;
@@ -31,7 +31,7 @@ public class GetMsgFromClientThread extends Thread {
                 String msg = br.readLine();
                 if(msg != null){
 
-                    String replayMsg = String.format("<- %s ->\n%s", DateFormatUtils.format(new Date(),TimeUtils.yyyyMMddHHmmss),msg);
+                    String replayMsg = String.format("<- %s ->\n%s", DateFormatUtils.format(new Date(), SysConst.DATE_DATETIME_FORMAT),msg);
                     System.out.println(replayMsg);
                     //添加到信息链表的集合中
                     msgList.addFirst(replayMsg);

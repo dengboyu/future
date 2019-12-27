@@ -1,6 +1,8 @@
 package by.future.common.utils;
 
 
+import by.future.entity.constant.SysConst;
+
 import java.util.*;
 
 /**
@@ -11,15 +13,7 @@ import java.util.*;
  */
 public class TimeUtils {
 
-    public static final String yyyyMMddReal = "yyyyMMdd";
-    public static final String yyyyMMdd = "yyyy-MM-dd";
-    public static final String yyyyMMddHHmm = "yyyy-MM-dd HH:mm";
-    public static final String yyyyMMddHHmmss = "yyyy-MM-dd HH:mm:ss";
-    public static final String yyyyMMddHHmmssss = "yyyy-MM-dd HH:mm:ss.ss";
-    public static final String yyyyMMddHHmmsssssss = "yyyy-MM-dd HH:mm:ss.ss.sss";
-
-    public static final String[] PATTERNS = {yyyyMMdd,yyyyMMddHHmm,yyyyMMddHHmmss,yyyyMMddReal,yyyyMMddHHmmssss,yyyyMMddHHmmsssssss};
-
+    public static final String[] PATTERNS = {SysConst.DATE_DAY_FORMAT,SysConst.DATE_DATETIME_MINUTE_FORMAT,SysConst.DATE_DATETIME_FORMAT, SysConst.DATE_DAY_COMPACT_FORMAT};
 
 
     /**
