@@ -12,6 +12,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -110,7 +112,8 @@ public class ServiceTest {
 
     @Test
     public void methodTwo(){
-
+        HashMap<String,String> map = new HashMap<>(20);
+        System.out.println(map);
 
 
     }
@@ -118,9 +121,11 @@ public class ServiceTest {
     @Test
     public void methodThree(){
 
-        Exception exception = new Exception();
-        StackTraceElement[] stackTraceElement = exception.getStackTrace();
+        System.out.println(-10 >>> 2);
+        System.out.println(-10 >> 2);
 
+        String[] arr1 = new String[10];
+        LinkedList<String>[] arr = new LinkedList[20];
     }
 
 
