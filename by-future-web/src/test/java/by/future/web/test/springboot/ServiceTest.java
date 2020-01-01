@@ -7,12 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.StopWatch;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -23,7 +22,43 @@ import java.util.concurrent.atomic.AtomicReference;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ServiceTest {
 
-    Logger logger = LoggerFactory.getLogger(ServiceTest.class);
+    private static Logger logger = LoggerFactory.getLogger(ServiceTest.class);
+
+    /**
+     * 得到运行时系统cpu-内存相关信息
+     *
+     * @Author：by@Deng
+     * @Date：2019/12/29 13:44
+     */
+    @Test
+    public void printSystemInfo(){
+
+        System.out.println(System.getProperties());
+
+        System.out.println(System.getProperty("os.name"));
+
+        System.out.println(Runtime.getRuntime().availableProcessors());
+
+        System.out.println(Runtime.getRuntime().totalMemory());
+        System.out.println(Runtime.getRuntime().maxMemory());
+        System.out.println(Runtime.getRuntime().freeMemory());
+
+
+        //创建无用对象是非常耗时的
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+//        long sum = 0L;    //耗时703ms
+        Long sum = 0L;      //耗时8000ms，有自动拆装箱，所以创建2^31个无用对象
+        for (long i = 0; i <= Integer.MAX_VALUE; i++)
+            sum += i;
+
+        stopWatch.stop();
+
+        System.out.println(sum);
+        System.out.println("耗时："+stopWatch.getTotalTimeMillis());
+
+
+    }
 
     @Test
     public void tesFor(){
@@ -98,18 +133,18 @@ public class ServiceTest {
 
     @Test
     public void testOther(){
-        methodTwo();
-//        methodThree();
 
-        System.gc();
+
 
     }
 
 
     @Test
     public void methodTwo(){
-        HashMap<String,String> map = new HashMap<>(20);
-        System.out.println(map);
+
+
+
+
 
 
     }
@@ -117,11 +152,9 @@ public class ServiceTest {
     @Test
     public void methodThree(){
 
-        System.out.println(-10 >>> 2);
-        System.out.println(-10 >> 2);
 
-        String[] arr1 = new String[10];
-        LinkedList<String>[] arr = new LinkedList[20];
+
+
     }
 
 

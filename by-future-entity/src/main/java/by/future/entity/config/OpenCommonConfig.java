@@ -1,15 +1,19 @@
 package by.future.entity.config;
 
 
+import com.google.common.base.MoreObjects;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * @Author：by@Deng
  * @Date：2019/12/20 16:30
  */
-public class OpenCommonConfig implements Serializable {
+public class OpenCommonConfig implements Serializable,Comparable<OpenCommonConfig> {
 
     public static final long serialVersionUID = -1L;
+
 
     /** 总开关：true,false */
     private boolean openFlag;
@@ -21,9 +25,7 @@ public class OpenCommonConfig implements Serializable {
     private String limitNums;
 
 
-    public boolean isOpenFlag() {
-        return openFlag;
-    }
+    public boolean isOpenFlag() { return openFlag; }
 
     public void setOpenFlag(boolean openFlag) {
         this.openFlag = openFlag;
@@ -43,5 +45,38 @@ public class OpenCommonConfig implements Serializable {
 
     public void setLimitNums(String limitNums) {
         this.limitNums = limitNums;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (Objects.isNull(obj)) return false;
+        if (obj.getClass() != getClass()) return false;
+
+        OpenCommonConfig openCommonConfig = (OpenCommonConfig) obj;
+
+        return Objects.equals(this.openFlag, openCommonConfig.openFlag) &&
+                Objects.equals(this.type, openCommonConfig.type) &&
+                Objects.equals(this.limitNums, openCommonConfig.limitNums);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(isOpenFlag(), getType(), getLimitNums());
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("openFlag",openFlag)
+                .add("type",type)
+                .add("limitNums",limitNums)
+                .toString();
+    }
+
+
+    @Override
+    public int compareTo(OpenCommonConfig o) {
+        return Integer.compare(getType(),o.getType());
     }
 }
