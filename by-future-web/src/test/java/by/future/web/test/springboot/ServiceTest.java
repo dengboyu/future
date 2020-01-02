@@ -1,19 +1,17 @@
 package by.future.web.test.springboot;
 
 
-import by.future.common.utils.IpUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.StopWatch;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -24,7 +22,43 @@ import java.util.concurrent.atomic.AtomicReference;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ServiceTest {
 
-    Logger logger = LoggerFactory.getLogger(ServiceTest.class);
+    private static Logger logger = LoggerFactory.getLogger(ServiceTest.class);
+
+    /**
+     * 得到运行时系统cpu-内存相关信息
+     *
+     * @Author：by@Deng
+     * @Date：2019/12/29 13:44
+     */
+    @Test
+    public void printSystemInfo(){
+
+        System.out.println(System.getProperties());
+
+        System.out.println(System.getProperty("os.name"));
+
+        System.out.println(Runtime.getRuntime().availableProcessors());
+
+        System.out.println(Runtime.getRuntime().totalMemory());
+        System.out.println(Runtime.getRuntime().maxMemory());
+        System.out.println(Runtime.getRuntime().freeMemory());
+
+
+        //创建无用对象是非常耗时的
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+//        long sum = 0L;    //耗时703ms
+        Long sum = 0L;      //耗时8000ms，有自动拆装箱，所以创建2^31个无用对象
+        for (long i = 0; i <= Integer.MAX_VALUE; i++)
+            sum += i;
+
+        stopWatch.stop();
+
+        System.out.println(sum);
+        System.out.println("耗时："+stopWatch.getTotalTimeMillis());
+
+
+    }
 
     @Test
     public void tesFor(){
@@ -101,19 +135,17 @@ public class ServiceTest {
 
     @Test
     public void testOther(){
-        methodTwo();
-//        methodThree();
 
-        System.out.println(IpUtils.ipToLong("127.0.0.1"));
-        System.out.println(IpUtils.longToIP(1002323));
 
     }
 
 
     @Test
     public void methodTwo(){
-        HashMap<String,String> map = new HashMap<>(20);
-        System.out.println(map);
+
+
+
+
 
 
     }
@@ -121,11 +153,31 @@ public class ServiceTest {
     @Test
     public void methodThree(){
 
-        System.out.println(-10 >>> 2);
-        System.out.println(-10 >> 2);
+        try {
+//            InputStream is =  new FileInputStream("/Users/by/Desktop/map.jpeg");
+//
+//            byte[] bytes = new byte[1024];
+//            int a  =is.read(bytes,0,bytes.length);
+//            System.out.println("sfd:"+bytes);
 
-        String[] arr1 = new String[10];
-        LinkedList<String>[] arr = new LinkedList[20];
+            int a = 127;
+            int b = 128;
+            int c = 256;
+
+            Byte a1 = (byte)a;
+            Byte b1 = (byte)b;
+            Byte c1 = (byte)c;
+
+            System.out.println(a1);
+            System.out.println(b1);
+            System.out.println(c1);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 

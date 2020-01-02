@@ -13,7 +13,6 @@
     <packaging>jar</packaging>
 
     <name>by-future-entity</name>
-    <url>http://www.example.com</url>
 
 
     <dependencies>
@@ -22,7 +21,10 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
-        
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
 
     </dependencies>
 
