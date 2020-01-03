@@ -1,7 +1,6 @@
 package by.future.web;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -16,7 +15,6 @@ public class WebApplication {
 
 
         try{
-
             SpringApplication.run(WebApplication.class, args);
 
         }catch (Exception e){

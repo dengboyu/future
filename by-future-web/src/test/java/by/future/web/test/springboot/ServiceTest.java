@@ -131,9 +131,10 @@ public class ServiceTest {
 
     }
 
+
+
     @Test
     public void testOther(){
-
 
 
     }
@@ -152,7 +153,29 @@ public class ServiceTest {
     @Test
     public void methodThree(){
 
+        try {
+//            InputStream is =  new FileInputStream("/Users/by/Desktop/map.jpeg");
+//
+//            byte[] bytes = new byte[1024];
+//            int a  =is.read(bytes,0,bytes.length);
+//            System.out.println("sfd:"+bytes);
 
+            int a = 127;
+            int b = 128;
+            int c = 256;
+
+            Byte a1 = (byte)a;
+            Byte b1 = (byte)b;
+            Byte c1 = (byte)c;
+
+            System.out.println(a1);
+            System.out.println(b1);
+            System.out.println(c1);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }

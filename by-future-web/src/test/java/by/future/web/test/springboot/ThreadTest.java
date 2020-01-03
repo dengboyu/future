@@ -141,9 +141,11 @@ public class ThreadTest {
     @Test
     public void testThreadLocal() throws InterruptedException {
 
-//        CountDownLatch countDownLatch = new CountDownLatch(40);
+        CountDownLatch countDownLatch = new CountDownLatch(40);
         ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
-        for(int i=0;i<40;i++){
+
+
+//        for(int i=0;i<40;i++){
 
 //            Thread.sleep(100);
             executor.execute(new Runnable() {
@@ -153,15 +155,14 @@ public class ThreadTest {
                         Thread.sleep(1000);
                         System.out.println("遇见最好的自己");
 
-//                        countDownLatch.countDown();
+                        countDownLatch.countDown();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
             });
-        }
 
-//        countDownLatch.await();
+        countDownLatch.await();
         System.out.println("最终");
 
         /*Thread thread1 = new Thread(new ThreadLocalTest());
