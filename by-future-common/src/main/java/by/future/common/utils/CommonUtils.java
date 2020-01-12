@@ -40,7 +40,7 @@ public class CommonUtils {
         if (StringUtils.isNotEmpty(shardField)) {
             for (int i = 0; i < shardField.length(); i += 2) {
                 code *= 16777619;
-                code &= 0xffffffffL; // Convert to uint in .Net
+                code &= 0xffffffffL; // Convert to uint
                 code ^= shardField.charAt(i);
             }
         }

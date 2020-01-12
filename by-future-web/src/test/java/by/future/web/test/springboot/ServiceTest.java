@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.util.StopWatch;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -33,7 +32,7 @@ public class ServiceTest {
     @Test
     public void printSystemInfo(){
 
-        System.out.println(System.getProperties());
+        /*System.out.println(System.getProperties());
 
         System.out.println(System.getProperty("os.name"));
 
@@ -41,11 +40,11 @@ public class ServiceTest {
 
         System.out.println(Runtime.getRuntime().totalMemory());
         System.out.println(Runtime.getRuntime().maxMemory());
-        System.out.println(Runtime.getRuntime().freeMemory());
+        System.out.println(Runtime.getRuntime().freeMemory());*/
 
 
         //创建无用对象是非常耗时的
-        StopWatch stopWatch = new StopWatch();
+        /*StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 //        long sum = 0L;    //耗时703ms
         Long sum = 0L;      //耗时8000ms，有自动拆装箱，所以创建2^31个无用对象
@@ -55,7 +54,11 @@ public class ServiceTest {
         stopWatch.stop();
 
         System.out.println(sum);
-        System.out.println("耗时："+stopWatch.getTotalTimeMillis());
+        System.out.println("耗时："+stopWatch.getTotalTimeMillis());*/
+
+        //获取当前方法的名称，尽量少用
+        StackTraceElement[] arr = Thread.currentThread().getStackTrace();
+
 
 
     }
@@ -137,15 +140,13 @@ public class ServiceTest {
     public void testOther(){
 
 
+
+
     }
 
 
     @Test
     public void methodTwo(){
-
-
-        ""
-
 
 
 

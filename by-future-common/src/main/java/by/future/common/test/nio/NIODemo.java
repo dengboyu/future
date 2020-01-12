@@ -24,6 +24,8 @@ public class NIODemo {
      * 以下code将Sever端的监听连接请求的事件和处理请求的事件放在一个线程中，但是在真实应用中，通常会把他们放到两个线程中，一个线程以阻塞方式负责监听
      * 客户端的连接请求，另一个线程负责业务处理请求，负责业务处理的线程才会真正用NIO的方式，像Tomcat、Jetty都是使用这种方式
      *
+     * Tomcat:connector组件负责接收请求，container组件负责处理请求，connector将request/response对象传递给container处理
+     *
      * 
      * @Author：by@Deng
      * @Date：2020/1/4 14:45
