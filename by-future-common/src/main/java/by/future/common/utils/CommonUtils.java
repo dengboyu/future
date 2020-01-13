@@ -45,7 +45,7 @@ public class CommonUtils {
             }
         }
 
-        int shardId = (int) (code % shardCount) + 1;
+        int shardId = (int) (code & (shardCount-1)) + 1;
 
         return shardId;
     }
