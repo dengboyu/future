@@ -3,6 +3,7 @@ package by.future.common.utils;
 
 import by.future.entity.common.SignResultEntity;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +14,29 @@ import java.util.List;
  */
 public class RedisUtils {
 
+    public static String test(){
+        try {
+
+            int i =1/0;
+
+            System.out.println("11");
+            return "1";
+
+        }catch (Exception e){
+
+            System.out.println("22");
+            return "2";
+
+        }finally {
+
+            System.out.println("33");
+            //return "3";
+        }
+    }
+
 
     /**
-     * 分布式锁 2.6.12版本之前，这个方法还是有问题的，借鉴把时间戳带上的思想即可
+     * 分布式锁 2.6.12版本之前，借鉴把时间戳带上的思想即可
      * 依赖setNx，getSet两个方法，不依赖expire方法，即便删除锁失败时，逻辑（2）会规避锁不释放问题
      *
      * @Author：by@Deng
@@ -26,8 +47,8 @@ public class RedisUtils {
         boolean lock = false;
         while (!lock){
 
-            //锁的时间5s
-            long lockTime = 5000;
+            //锁的时间1s
+            long lockTime = 1000;
 
             String expireTime = String.valueOf(System.currentTimeMillis() + lockTime);
 
@@ -35,7 +56,7 @@ public class RedisUtils {
             if(lock) return lock;
 
             String oldTimeStr = getStr(lockKey);
-            if(oldTimeStr !=null && !"".equals(oldTimeStr.trim())){
+            if(StringUtils.isNotEmpty(oldTimeStr)){
                 Long oldTime = Long.valueOf(oldTimeStr);
 
                 Long nowTime = System.currentTimeMillis();
@@ -47,7 +68,7 @@ public class RedisUtils {
                     String oldTimeStr2 = getSet(lockKey,String.valueOf(System.currentTimeMillis()+lockTime));
 
                     //如果刚获取的时间戳和之前获取的时间戳一样的话，说明没有其他线程在占用这个锁，则此线程可以获取这个锁
-                    if(oldTimeStr2!=null && oldTimeStr.equals(oldTimeStr2)){
+                    if(StringUtils.isNotEmpty(oldTimeStr2) && oldTimeStr.equals(oldTimeStr2)){
                         lock = true;    //获取锁标记
                         break;
                     }
@@ -58,7 +79,7 @@ public class RedisUtils {
                 //暂停50ms，重新循环
                 Thread.sleep(50);
             }catch (InterruptedException e){
-
+                break;
             }
         }
 
@@ -95,6 +116,7 @@ public class RedisUtils {
 
     /**
      * 防雪崩、击穿获取db信息
+     * 分布式总共有128个锁，锁的粒度很重要
      *
      * @Author：by@Deng
      * @Date：2020/1/13 22:53

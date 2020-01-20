@@ -1,6 +1,8 @@
 package by.future.web.test.springboot;
 
 
+import by.future.common.utils.RedisUtils;
+import by.future.common.utils.ThreadUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -11,6 +13,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -22,6 +29,11 @@ import java.util.concurrent.atomic.AtomicReference;
 public class ServiceTest {
 
     private static Logger logger = LoggerFactory.getLogger(ServiceTest.class);
+
+    //以下这两种很容易造成内存泄漏
+    private static Map<String,String> hashMap = new HashMap<>();
+    private static List<String> strList = new ArrayList<>();
+
 
     /**
      * 得到运行时系统cpu-内存相关信息
@@ -135,19 +147,48 @@ public class ServiceTest {
     }
 
 
-
     @Test
-    public void testOther(){
+    public void testOther() throws InterruptedException {
+
+        ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
+
+        CountDownLatch countDownLatch = new CountDownLatch(30);
+
+        for(int i =0;i<100;i++){
+            executor.execute(new RunTest(countDownLatch,i));
+        }
+
+        System.out.println("剩余："+countDownLatch.getCount());
+        countDownLatch.await();
+        System.out.println("结束");
+
+        executor.shutdown();
 
 
+    }
 
+    class RunTest implements Runnable{
 
+        private CountDownLatch countDownLatch;
+        private int i;
+
+        public RunTest(CountDownLatch countDownLatch, int i) {
+            this.countDownLatch = countDownLatch;
+            this.i = i;
+        }
+
+        @Override
+        public void run() {
+            System.out.println("循环前："+i+"---"+countDownLatch.getCount());
+            countDownLatch.countDown();
+        }
     }
 
 
     @Test
     public void methodTwo(){
 
+        System.out.println(RedisUtils.test());
 
 
     }
