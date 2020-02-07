@@ -1,6 +1,6 @@
 package by.future.common.filter;
 
-import by.future.common.proxy.responseProxy.GzipResponseProxy;
+import by.future.common.pattern.proxy.responseProxy.GzipResponseProxy;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

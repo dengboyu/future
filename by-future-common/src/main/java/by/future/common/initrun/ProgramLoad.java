@@ -1,7 +1,7 @@
 package by.future.common.initrun;
 
 
-import by.future.common.singleton.PersonDaemonSingle;
+import by.future.common.pattern.singleton.PersonDaemonSingle;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;

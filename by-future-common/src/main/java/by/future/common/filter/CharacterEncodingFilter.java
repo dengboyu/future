@@ -2,7 +2,7 @@ package by.future.common.filter;
 
 
 import by.future.entity.constant.SysConst;
-import by.future.common.proxy.requestProxy.CharacterEncodingRequestProxy;
+import by.future.common.pattern.proxy.requestProxy.CharacterEncodingRequestProxy;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

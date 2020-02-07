@@ -1,4 +1,4 @@
-package by.future.common.singleton;
+package by.future.common.pattern.singleton;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,4 +1,4 @@
-package by.future.common.proxy.responseProxy;
+package by.future.common.pattern.proxy.responseProxy;
 
 import by.future.entity.constant.SysConst;
 import by.future.enums.commonenum.ResultCodeEnum;

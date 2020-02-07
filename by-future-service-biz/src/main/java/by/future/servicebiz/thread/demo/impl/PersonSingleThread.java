@@ -1,6 +1,6 @@
 package by.future.servicebiz.thread.demo.impl;
 
-import by.future.common.singleton.PersonSingle;
+import by.future.common.pattern.singleton.PersonSingle;
 
 /**
  * @author by@Deng

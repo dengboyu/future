@@ -1,4 +1,4 @@
-package by.future.common.proxy.requestProxy;
+package by.future.common.pattern.proxy.requestProxy;
 
 
 import by.future.entity.constant.SysConst;

@@ -1,4 +1,4 @@
-package by.future.common.cglib.requestcglib;
+package by.future.common.pattern.cglib.requestcglib;
 
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
