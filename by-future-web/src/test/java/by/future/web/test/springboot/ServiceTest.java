@@ -1,7 +1,6 @@
 package by.future.web.test.springboot;
 
 
-import by.future.common.utils.RedisUtils;
 import by.future.common.utils.ThreadUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,7 +32,6 @@ public class ServiceTest {
     //以下这两种很容易造成内存泄漏
     private static Map<String,String> hashMap = new HashMap<>();
     private static List<String> strList = new ArrayList<>();
-
 
     /**
      * 得到运行时系统cpu-内存相关信息
@@ -185,10 +183,12 @@ public class ServiceTest {
     }
 
 
+
+
     @Test
     public void methodTwo(){
 
-        System.out.println(RedisUtils.test());
+
 
 
     }
