@@ -184,10 +184,6 @@ public class ServiceTest {
     }
 
 
-
-
-
-
     @Test
     public void methodTwo(){
 
@@ -200,9 +196,11 @@ public class ServiceTest {
     }
 
     @Test
-    public void methodThree(){
+    public void methodThree() {
 
-        System.out.println(Integer.toString(234,16));
+
+
+
 
     }
 
