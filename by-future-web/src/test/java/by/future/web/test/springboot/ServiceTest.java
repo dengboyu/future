@@ -34,6 +34,7 @@ public class ServiceTest {
     private static Map<String,String> hashMap = new HashMap<>();
     private static List<String> strList = new ArrayList<>();
 
+
     /**
      * 得到运行时系统cpu-内存相关信息
      *

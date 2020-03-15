@@ -1,7 +1,5 @@
 package by.future.common.annotation;
 
-import jdk.nashorn.internal.objects.annotations.Function;
-
 import java.lang.annotation.*;
 
 /**
@@ -14,4 +12,7 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 @Inherited
 public @interface Result{
+
+    int resultCode() default 0;
+
 }

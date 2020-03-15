@@ -1,5 +1,7 @@
 package by.future.common.annotation;
 
+import org.springframework.core.annotation.AliasFor;
+
 import java.lang.annotation.*;
 
 /**
@@ -11,4 +13,8 @@ import java.lang.annotation.*;
 @Inherited
 @Result
 public @interface TestAnnotation{
+
+    @AliasFor(annotation = Result.class)
+    int resultCode() default 0;
+
 }
