@@ -177,6 +177,58 @@ public class ThreadTest {
 
 
 
+    @Test
+    public void testOther() throws InterruptedException {
+
+        ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
+
+        CountDownLatch countDownLatch = new CountDownLatch(10);
+
+        for(int i =0;i<10;i++){
+            executor.execute(new RunTest(countDownLatch,i));
+        }
+
+        System.out.println("剩余："+countDownLatch.getCount());
+//        countDownLatch.await();
+        System.out.println("结束");
+
+        Thread.sleep(10000);
+
+
+    }
+
+    class RunTest implements Runnable{
+
+        private CountDownLatch countDownLatch;
+        private int i;
+
+        private RunTest(CountDownLatch countDownLatch, int i) {
+            this.countDownLatch = countDownLatch;
+            this.i = i;
+        }
+
+        @Override
+        public void run() {
+
+            System.out.println("循环前："+i+"---"+countDownLatch.getCount());
+
+            countDownLatch.countDown();
+
+            try {
+
+                Thread.sleep(5000);
+
+                countDownLatch.await();
+                System.out.println("统一调用"+i);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }finally {
+
+            }
+        }
+    }
+
 
 
 }

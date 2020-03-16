@@ -1,7 +1,6 @@
 package by.future.web.test.springboot;
 
 
-import by.future.common.utils.ThreadUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -15,9 +14,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -147,53 +143,24 @@ public class ServiceTest {
 
 
     @Test
-    public void testOther() throws InterruptedException {
-
-        ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
-
-        CountDownLatch countDownLatch = new CountDownLatch(30);
-
-        for(int i =0;i<100;i++){
-            executor.execute(new RunTest(countDownLatch,i));
-        }
-
-        System.out.println("剩余："+countDownLatch.getCount());
-        countDownLatch.await();
-        System.out.println("结束");
-
-        executor.shutdown();
-
-
-    }
-
-    class RunTest implements Runnable{
-
-        private CountDownLatch countDownLatch;
-        private int i;
-
-        public RunTest(CountDownLatch countDownLatch, int i) {
-            this.countDownLatch = countDownLatch;
-            this.i = i;
-        }
-
-        @Override
-        public void run() {
-            System.out.println("循环前："+i+"---"+countDownLatch.getCount());
-            countDownLatch.countDown();
-        }
-    }
-
-
-    @Test
     public void methodTwo(){
 
+        List<String> strList = new ArrayList<>();
+        strList.add("bacn");
 
-        ConcurrentHashMap<String,String> hashMap = new ConcurrentHashMap<>();
-        hashMap.put("a",null);
+        try {
+            strList.getClass().getMethod("add",Object.class).invoke(strList,123);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        System.out.println(hashMap);
-
+        for(int i=0;i<strList.size();i++){
+            Object s = strList.get(i);
+            System.out.println("我是:"+s.getClass());
+        }
     }
+
+
 
     @Test
     public void methodThree() {
