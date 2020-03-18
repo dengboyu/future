@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Author：by@Deng
@@ -170,19 +171,20 @@ public class ThreadTest {
 
 
 
+
     @Test
     public void testOther() throws InterruptedException {
 
         ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
 
-        CountDownLatch countDownLatch = new CountDownLatch(10);
+        CountDownLatch countDownLatch = new CountDownLatch(100);
 
-        for(int i =0;i<10;i++){
+        for(int i =0;i<100;i++){
             executor.execute(new RunTest(countDownLatch,i));
         }
 
-        System.out.println("剩余："+countDownLatch.getCount());
-//        countDownLatch.await();
+//        System.out.println("剩余："+countDownLatch.getCount());
+        countDownLatch.await();
         System.out.println("结束");
 
         Thread.sleep(10000);
@@ -207,21 +209,48 @@ public class ThreadTest {
 
             countDownLatch.countDown();
 
-            try {
-
-                Thread.sleep(5000);
-
-                countDownLatch.await();
-                System.out.println("统一调用"+i);
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }finally {
-
-            }
+//            try {
+//
+//                Thread.sleep(5000);
+//
+//                countDownLatch.await();
+//                System.out.println("统一调用"+i);
+//
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }finally {
+//
+//            }
         }
     }
 
+
+    volatile  AtomicInteger num;
+    @Test
+    public void testAtomic(){
+
+        num = new AtomicInteger(0);
+
+        ExecutorService executorService = ThreadUtils.getExecutorServiceInstance();
+
+        for(int i=0;i<100;i++){
+
+            executorService.submit(()->{
+
+                num.incrementAndGet();
+
+            });
+
+        }
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(num);
+
+    }
 
 
 }

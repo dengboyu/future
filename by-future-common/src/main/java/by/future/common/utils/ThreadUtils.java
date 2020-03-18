@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
  */
 public class ThreadUtils {
 
-    private static ExecutorService executor = Executors.newFixedThreadPool(10);
+    private static ExecutorService executor = Executors.newFixedThreadPool(100);
 
     private ThreadUtils() {
     }
