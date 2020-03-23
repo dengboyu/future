@@ -3,6 +3,7 @@ package by.future.web.test.springboot;
 
 import by.future.common.cache.SafeBuffer;
 import by.future.common.utils.ThreadUtils;
+import by.future.servicebiz.thread.demo.impl.ThreadCallableDemo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -111,31 +112,35 @@ public class ThreadTest {
         ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
 
         List<Future> futureList = new ArrayList<>();
-        for(int i=0;i<20;i++){
+        for(int i=0;i<200;i++){
 
-//            executor.execute(new ThreadDemo());
+            Future<Object> f= executor.submit(new ThreadCallableDemo(i));
+            //此处可以扩展监听机制 Future.addListener()方法
 
-//            Future<Integer> f= executor.submit(new ThreadCallableDemo(i));
-//            futureList.add(f);
+            futureList.add(f);
         }
-
-        /*futureList.stream().forEach(n->{
-            try {
-
-                System.out.println(n.get());
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });*/
 
         System.out.println("看看谁先出来");
 
-        try {
+        for(int i=0;i<futureList.size();i++){
+            try {
+                System.out.println(futureList.get(i).get(5,TimeUnit.SECONDS));    //按照请求的顺序返回来，future的get()是阻塞调用线程
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (TimeoutException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("再走试试");
+
+        /*try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 

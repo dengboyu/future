@@ -1,10 +1,5 @@
 package by.future.servicebiz.thread.demo.impl;
 
-import by.future.common.utils.ApplicationContextUtils;
-import by.future.servicebiz.thread.demo.IThreadTwo;
-import by.future.servicebiz.thread.entity.ThreadTestEntity;
-import by.future.servicebiz.thread.entity.ThreadTestTwoEntity;
-
 /**
  * 线程测试类
  *
@@ -13,26 +8,8 @@ import by.future.servicebiz.thread.entity.ThreadTestTwoEntity;
  */
 public class ThreadDemo implements Runnable {
 
-    private static IThreadTwo threadTwo = ApplicationContextUtils.getBean("threadTwo", IThreadTwo.class);
-    private static IThreadTwo threadTwo1 = ApplicationContextUtils.getBean("threadThree", IThreadTwo.class);
-
-    private ThreadTestEntity threadTestEntity;
-    private ThreadTestTwoEntity threadTestTwoEntity;
-
-    public ThreadDemo() {
-    }
-
-    public ThreadDemo(ThreadTestEntity threadTestEntity, ThreadTestTwoEntity threadTestTwoEntity) {
-        this.threadTestEntity = threadTestEntity;
-        this.threadTestTwoEntity = threadTestTwoEntity;
-    }
-
     @Override
     public void run() {
-//        System.out.println(threadTestEntity.getName()+"------"+threadTestEntity.getAge());
-//        System.out.println(threadTestTwoEntity.getAddress()+"==="+threadTestTwoEntity.getStu());
-        threadTwo.test();
-        threadTwo1.test();
 
         try {
             Thread.sleep(1000);

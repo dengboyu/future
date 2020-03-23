@@ -11,8 +11,6 @@ public class ThreadCallableDemo implements Callable {
 
     private int i;
 
-    public ThreadCallableDemo() {}
-
     public ThreadCallableDemo(int i) {
         this.i = i;
     }
@@ -20,7 +18,7 @@ public class ThreadCallableDemo implements Callable {
     @Override
     public Object call() throws Exception {
         Thread.sleep(1000);
-        Integer j = i<<1;
-        return j;
+        System.out.println("打印的值:"+i);
+        return String.format("异步返回的值:%s",i);
     }
 }
