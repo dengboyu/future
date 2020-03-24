@@ -7,7 +7,7 @@ import java.util.concurrent.Callable;
  * @Author：by@Deng
  * @Date：2019/6/15 23:52
  */
-public class ThreadCallableDemo implements Callable {
+public class ThreadCallableDemo implements Callable<String> {
 
     private int i;
 
@@ -16,7 +16,7 @@ public class ThreadCallableDemo implements Callable {
     }
 
     @Override
-    public Object call() throws Exception {
+    public String call() throws Exception {
         Thread.sleep(1000);
         System.out.println("打印的值:"+i);
         return String.format("异步返回的值:%s",i);

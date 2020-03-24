@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.LockSupport;
 
 /**
  * @Author：by@Deng
@@ -112,9 +113,9 @@ public class ThreadTest {
         ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
 
         List<Future> futureList = new ArrayList<>();
-        for(int i=0;i<200;i++){
+        for(int i=0;i<20;i++){
 
-            Future<Object> f= executor.submit(new ThreadCallableDemo(i));
+            Future<String> f= executor.submit(new ThreadCallableDemo(i));
             //此处可以扩展监听机制 Future.addListener()方法
 
             futureList.add(f);
@@ -136,12 +137,32 @@ public class ThreadTest {
 
         System.out.println("再走试试");
 
+        threadBlock();
+        System.out.println("sdfsdf");
+
         /*try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
 
+    }
+
+    /**
+     * 是线程中断多长时间
+     *
+     * @Author：by@Deng
+     * @Date：2020/3/24 13:58
+     */
+    private void threadBlock(){
+
+        long time1 = System.currentTimeMillis();
+
+        LockSupport.parkNanos(10000000000l);
+
+        long time2 = System.currentTimeMillis();
+
+        System.out.println("调用者线程挂了"+(time2-time1)+"时间");
     }
 
     @Test
