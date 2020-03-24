@@ -1,25 +1,16 @@
 package by.future.web.test.springboot;
 
 
-import by.future.entity.config.BeanConfig;
 import by.future.entity.test.PersonTest;
-import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -261,27 +252,59 @@ public class WebTest {
     @Test
     public void testConfigAnnotation() {
 
-//        String test = "{\"dm_vincent\":{\"id\":1,\"name\":\"dm_vincent\",\"age\":28},\"dm_vincent2\":{\"id\":2,\"name\":\"dm_vincent2\",\"age\":29},\"dm_vincent3\":{\"id\":3,\"name\":\"dm_vincent3\",\"age\":30}}";
-//
-//        EntityWrapper<PersonTest> entityWrapper = JSONUtils.getEntityWrapper(test, PersonTest.class);
-//        System.out.println(entityWrapper);
-//        System.out.println(entityWrapper.getEntityWrapper().get("dm_vincent"));
+        List<ParallelEntity> parallelEntityList = new ArrayList<>();
 
-        /*PersonTest personTest = new PersonTest();
+        ParallelEntity parallelEntity = new ParallelEntity("中国");
+        parallelEntityList.add(parallelEntity);
 
-        personTest.setAge(11);
+        parallelEntity = new ParallelEntity("英国");
+        parallelEntityList.add(parallelEntity);
 
-        PersonTest personTest1 = new PersonTest();
-        personTest1.setAge(11);
+        parallelEntity = new ParallelEntity("韩国");
+        parallelEntityList.add(parallelEntity);
 
-        System.out.println(personTest.equals(personTest1));
-        System.out.println(personTest.hashCode()==personTest1.hashCode());*/
+        parallelEntity = new ParallelEntity("东南亚");
+        parallelEntityList.add(parallelEntity);
 
-        ThreadLocal threadLocal = null;
+        parallelEntity = new ParallelEntity("欧洲");
+        parallelEntityList.add(parallelEntity);
+
+        parallelEntity = new ParallelEntity("西班牙");
+        parallelEntityList.add(parallelEntity);
+
+        long beginTime = System.currentTimeMillis();
+        List<String> nameList = parallelEntityList.stream().map(parallelEntityEach->parallelEntityEach.getName()).collect(Collectors.toList());
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("串行用时:"+(endTime - beginTime)+"输出的信息:"+nameList);
 
 
+        long parallelBeginTime = System.currentTimeMillis();
+        List<String> parallelNameList = parallelEntityList.parallelStream().map(parallelEntityEach->parallelEntityEach.getName()).collect(Collectors.toList());
+        long parallelEndTime = System.currentTimeMillis();
+
+        System.out.println("并行用时:"+(parallelEndTime - parallelBeginTime)+"输出的信息:"+parallelNameList);
 
 
+    }
+
+    private class ParallelEntity{
+
+        private String name;
+
+        public ParallelEntity(String name) {
+            this.name = name;
+        }
+
+        public String getName(){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            return name;
+        }
     }
 
 
