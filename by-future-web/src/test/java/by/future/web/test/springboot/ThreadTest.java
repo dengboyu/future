@@ -113,7 +113,7 @@ public class ThreadTest {
         ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
 
         List<Future> futureList = new ArrayList<>();
-        for(int i=0;i<20;i++){
+        for(int i=0;i<200;i++){
 
             Future<String> f= executor.submit(new ThreadCallableDemo(i));
             //此处可以扩展监听机制 Future.addListener()方法
@@ -125,7 +125,7 @@ public class ThreadTest {
 
         for(int i=0;i<futureList.size();i++){
             try {
-                System.out.println(futureList.get(i).get(5,TimeUnit.SECONDS));    //按照请求的顺序返回来，future的get()是阻塞调用线程
+                System.out.println(futureList.get(i).get(1,TimeUnit.SECONDS));    //按照请求的顺序返回来，future的get()是阻塞调用线程
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
@@ -158,7 +158,7 @@ public class ThreadTest {
 
         long time1 = System.currentTimeMillis();
 
-        LockSupport.parkNanos(10000000000l);
+        LockSupport.parkNanos(5000000000l);
 
         long time2 = System.currentTimeMillis();
 

@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -144,7 +145,10 @@ public class WebTest {
         integerList.add(5);
         integerList.add(3);
 
-        System.out.println(integerList.stream().sorted((x,y)-> {if(x<4 && y<4) return -1; return 1;}).collect(Collectors.toList()));
+        List<Integer> newList = integerList.stream().sorted(Comparator.comparing(Integer::intValue).reversed()).collect(Collectors.toList());
+        System.out.println(newList);
+
+//        System.out.println(integerList.stream().sorted((x,y)-> {if(x<4 && y<4) return -1; return 1;}).collect(Collectors.toList()));
 
 //        System.out.println(integerList.stream().filter(n->n>4).mapToInt(Integer::intValue).sum());
 
