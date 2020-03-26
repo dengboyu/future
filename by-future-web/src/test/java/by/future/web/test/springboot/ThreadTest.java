@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -108,6 +107,31 @@ public class ThreadTest {
         }
     }
 
+    private void testPool(int i){
+
+        ThreadPoolExecutor executor = (ThreadPoolExecutor) ThreadUtils.getExecutorServiceInstance();
+
+        Future<String> future= executor.submit(new ThreadCallableDemo(i));
+        //此处可以扩展监听机制 Future.addListener()方法
+
+        try {
+            String value = future.get(2,TimeUnit.SECONDS);
+            System.out.println(value);
+        } catch (Exception e) {
+            System.out.println("超时："+i);
+        }
+
+        /*CompletableFuture<String> future = CompletableFuture.supplyAsync(new ThreadCallableDemo(i),executor);
+
+        CompletableFuture<String> newFuture = CompletableFutureUtils.timeoutAfter(future,2,TimeUnit.SECONDS);
+
+        try {
+            System.out.println(newFuture.get());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+    }
+
 
     /**
      * FutureTask
@@ -118,10 +142,38 @@ public class ThreadTest {
     @Test
     public void testThread(){
 
-        ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
+        int max = 50;
+        CountDownLatch countDownLatch = new CountDownLatch(max);
+        ExecutorService executor111 = Executors.newFixedThreadPool(max);
+        for(int i=0;i<max;i++){
+            final  int a =i;
+            executor111.execute(()->{
+
+                try {
+                    countDownLatch.countDown();
+
+                    countDownLatch.await();
+
+                    testPool(a);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            });
+        }
+        executor111.shutdown();
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        /*ThreadPoolExecutor executor = (ThreadPoolExecutor) ThreadUtils.getExecutorServiceInstance();
 
         List<Future> futureList = new ArrayList<>();
-        for(int i=0;i<200;i++){
+        for(int i=0;i<20;i++){
 
             Future<String> f= executor.submit(new ThreadCallableDemo(i));
             //此处可以扩展监听机制 Future.addListener()方法
@@ -129,26 +181,31 @@ public class ThreadTest {
             futureList.add(f);
         }
 
+        ExecutorService executor11 = Executors.newFixedThreadPool(10);
+
         long beginTime = System.currentTimeMillis();
 
-        for(int i=0;i<futureList.size();i++){
-            try {
-                System.out.println(futureList.get(i).get(1,TimeUnit.SECONDS));    //按照请求的顺序返回来，future的get()是阻塞调用线程
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (TimeoutException e) {
-                e.printStackTrace();
-            }
+        for(int i=futureList.size()-1;i>=0;i--){
+
+            final int a =i;
+            executor11.execute(()->{
+                try {
+                    System.out.println("队列数:"+executor.getQueue().size());
+                    System.out.println(futureList.get(a).get(1,TimeUnit.SECONDS));    //按照请求的顺序返回来，future的get()是阻塞调用线程
+                } catch (Exception e) {
+                    System.out.println("我是"+a+"超时");
+                }
+            });
         }
 
         long endTime = System.currentTimeMillis();
 
+        executor11.shutdown();
+
         System.out.println("遍历完用时："+(endTime-beginTime));
 
         threadBlock();
-        System.out.println("sdfsdf");
+        System.out.println("sdfsdf");*/
 
         /*try {
             Thread.sleep(5000);
