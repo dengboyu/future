@@ -2,6 +2,7 @@ package by.future.web.test.springboot;
 
 
 import by.future.common.cache.SafeBuffer;
+import by.future.common.utils.CompletableFutureUtils;
 import by.future.common.utils.ThreadUtils;
 import by.future.servicebiz.thread.demo.impl.ThreadCallableDemo;
 import org.junit.Test;
@@ -11,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.LockSupport;
@@ -107,6 +109,12 @@ public class ThreadTest {
     }
 
 
+    /**
+     * FutureTask
+     *
+     * @Author：by@Deng
+     * @Date：2020/3/26 16:38
+     */
     @Test
     public void testThread(){
 
@@ -121,7 +129,7 @@ public class ThreadTest {
             futureList.add(f);
         }
 
-        System.out.println("看看谁先出来");
+        long beginTime = System.currentTimeMillis();
 
         for(int i=0;i<futureList.size();i++){
             try {
@@ -135,7 +143,9 @@ public class ThreadTest {
             }
         }
 
-        System.out.println("再走试试");
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("遍历完用时："+(endTime-beginTime));
 
         threadBlock();
         System.out.println("sdfsdf");
@@ -147,6 +157,7 @@ public class ThreadTest {
         }*/
 
     }
+
 
     /**
      * 是线程中断多长时间
@@ -164,6 +175,75 @@ public class ThreadTest {
 
         System.out.println("调用者线程挂了"+(time2-time1)+"时间");
     }
+
+
+    /**
+     * completableFuture
+     *
+     * @Author：by@Deng
+     * @Date：2020/3/26 16:39
+     */
+    @Test
+    public void testCompletableFuture(){
+
+        ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
+
+        ArrayList<Future<String>> list = new ArrayList<>();
+
+        for(int i =0;i<200;i++){
+            final  int b = i;
+
+            CompletableFuture<String> future = CompletableFuture.supplyAsync(()->{
+
+                int randomInt =new Random().nextInt(2000);
+                try {
+                    Thread.sleep(randomInt);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                if(randomInt>=1000){
+                    System.out.println(b+"等待的时间太长了："+randomInt);
+                }
+
+                return "返回值："+b+"等待的时间："+randomInt;
+
+            },executor);
+
+            CompletableFuture<String> asyncFuture  = CompletableFutureUtils.timeoutAfter(future,1,TimeUnit.SECONDS);
+
+            list.add(asyncFuture);
+
+        }
+
+        long beginTime = System.currentTimeMillis();
+
+        for(int i=0;i<list.size();i++){
+
+            try {
+
+                String retValue = list.get(i).get(1, TimeUnit.SECONDS);
+                if (retValue!=null) {
+                    System.out.println(retValue);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (TimeoutException e) {
+                e.printStackTrace();
+            }
+        }
+
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("遍历完用时："+(endTime-beginTime));
+
+        threadBlock();
+        System.out.println("sdfsdf");
+
+    }
+
 
     @Test
     public void testThreadLocal() throws InterruptedException {

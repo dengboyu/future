@@ -17,7 +17,7 @@ public class ThreadCallableDemo implements Callable<String> {
 
     @Override
     public String call() throws Exception {
-        Thread.sleep(2000);
+        Thread.sleep(4000);
         return String.format("异步返回的值:%s",i);
     }
 }
