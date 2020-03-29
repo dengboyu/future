@@ -102,7 +102,7 @@ public class ConsistentHashingUtils {
 
 
     //32位的 Fowler-Noll-Vo 哈希算法
-    //https://en.wikipedia.org/wiki/Fowler–Noll–Vo_hash_function
+    //https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
     private static long FNVHash(String key) {
         final int p = 16777619;
         long hash = 2166136261L;

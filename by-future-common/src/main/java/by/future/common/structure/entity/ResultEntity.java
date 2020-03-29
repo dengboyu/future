@@ -1,12 +1,16 @@
 package by.future.common.structure.entity;
 
+import java.io.Serializable;
+
 /**
  * 统一返回数据格式
  *
  * @author by@Deng
  * @create 2017-12-01 09:52
  */
-public class ResultEntity<T> {
+public class ResultEntity<T> implements Serializable {
+
+    private static final long serialVersionUID = -1L;
 
     private Integer code;   //返回状态码
     private String message; //返回提示信息

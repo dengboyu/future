@@ -1,6 +1,8 @@
 package by.future.web.test.springboot;
 
 
+import by.future.common.utils.CommonUtils;
+import by.future.common.utils.UUIDUtils;
 import by.future.entity.test.PersonTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -310,6 +312,24 @@ public class WebTest {
             return name;
         }
     }
+
+
+    @Test
+    public void testCommon(){
+
+        for(int i=0;i<50;i++){
+            String a = UUIDUtils.getUUID();
+            System.out.println(i+":"+CommonUtils.shardCore(4,a));
+            System.out.println(i+":"+CommonUtils.shardCore(8,a));
+        }
+
+
+    }
+
+
+
+
+
 
 
 

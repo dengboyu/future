@@ -22,7 +22,6 @@ public class ByExceptionHandler {
     private final static Logger logger = LoggerFactory.getLogger(ByException.class);
 
     @ExceptionHandler(Exception.class)
-//    @ResponseBody
     public ResultEntity handleBadRequest(Exception e) {
 
         if(e instanceof ByException){
