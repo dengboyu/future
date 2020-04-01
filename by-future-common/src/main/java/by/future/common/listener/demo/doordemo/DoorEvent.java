@@ -2,11 +2,12 @@ package by.future.common.listener.demo.doordemo;
 
 /**
  * 事件对象，封装事件源
+ * 真正写的时候，DoorEvent需要继承EventObject
  *
  * @author by@Deng
  * @create 2019-06-01 13:03
  */
-public class DoorEvent {
+public class DoorEvent  {
 
     private DoorSource doorSource;
 

@@ -164,7 +164,7 @@ public class ServiceTest {
 
 
     @Test
-    public void methodThree() {
+    public void methodThree() throws Exception{
 
 
     }
