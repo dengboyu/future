@@ -40,6 +40,12 @@ public class UserLogin {
         cookie.setHttpOnly(true);
         response.addCookie(cookie);
 
+        Cookie cookie1 = new Cookie("token1",UUIDUtils.getUUID());
+        cookie1.setMaxAge(2 * 60 * 60 *24);
+        cookie1.setPath("/");
+        cookie1.setHttpOnly(true);
+        response.addCookie(cookie1);
+
         /*int count =0;
         for(int i = 0;i<Integer.MAX_VALUE;i++){
             try {
