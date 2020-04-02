@@ -1,4 +1,4 @@
-package by.future.web.websocket.tomcat8.demo;
+package by.future.common.servlet.tomcat8.demo;
 
 
 import java.io.BufferedReader;
