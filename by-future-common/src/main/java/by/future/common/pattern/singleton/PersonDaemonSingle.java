@@ -17,13 +17,13 @@ public class PersonDaemonSingle {
 
         daemonThread = new Thread(()->{
 
-            System.out.println("我是PersonDaemon初始化启动后台线程");
-            System.out.println("当前线程："+Thread.currentThread().getName());
+            System.out.println("初始化Daemon线程："+Thread.currentThread().getName());
 
             while (!Thread.currentThread().isInterrupted()){
-                System.out.println("我是后台线程,不停的做事");
+
                 try {
-                    TimeUnit.SECONDS.sleep(1);
+                    TimeUnit.SECONDS.sleep(10);
+                    System.out.println("Daemon线程,10s轮询业务");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
