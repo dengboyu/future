@@ -1,4 +1,4 @@
-package by.future.web.user;
+package by.future.common.SPI;
 
 
 import javax.servlet.ServletContainerInitializer;

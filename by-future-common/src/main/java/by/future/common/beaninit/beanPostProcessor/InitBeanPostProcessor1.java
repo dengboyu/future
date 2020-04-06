@@ -1,4 +1,4 @@
-package by.future.common.bean;
+package by.future.common.beaninit.beanPostProcessor;
 
 
 import org.apache.commons.lang3.StringUtils;

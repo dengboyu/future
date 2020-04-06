@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.servlet.http.Cookie;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -313,16 +312,13 @@ public class WebTest {
     }
 
 
-    @Test
-    public void testCommon(){
 
-        Cookie cookie = new Cookie("name","aa");
+    @Test
+    public void testCommon() throws Exception {
 
 
 
     }
-
-
 
 
 
