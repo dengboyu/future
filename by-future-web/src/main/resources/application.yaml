@@ -4,7 +4,7 @@ logging:
         console: "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %-5level %logger{50} - %msg%n"
     level:
         by:
-            future: debug
+            future: info
         org:
-            springframework: debug
+            springframework: info
         org.springframework.boot.autoconfigure: info
