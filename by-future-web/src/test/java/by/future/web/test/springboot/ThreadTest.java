@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.LockSupport;
 
 /**
@@ -371,47 +370,44 @@ public class ThreadTest {
             System.out.println("循环前："+i+"---"+countDownLatch.getCount());
 
             countDownLatch.countDown();
-
-//            try {
-//
-//                Thread.sleep(5000);
-//
-//                countDownLatch.await();
-//                System.out.println("统一调用"+i);
-//
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }finally {
-//
-//            }
         }
     }
 
 
-    volatile  AtomicInteger num;
     @Test
     public void testAtomic(){
 
-        num = new AtomicInteger(0);
+        ExecutorService executor = ThreadUtils.getExecutorServiceInstance();
 
-        ExecutorService executorService = ThreadUtils.getExecutorServiceInstance();
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(4);
 
-        for(int i=0;i<100;i++){
+        for(int i=0;i<10;i++){
 
-            executorService.submit(()->{
+            final int a = i;
+            executor.execute(()->{
 
-                num.incrementAndGet();
+                try {
 
+                    Thread.sleep(1000);
+
+                    cyclicBarrier.await();
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println("执行顺序:"+a);
             });
 
         }
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(num);
 
     }
 

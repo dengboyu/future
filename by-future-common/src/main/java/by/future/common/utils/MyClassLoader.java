@@ -18,7 +18,7 @@ public class MyClassLoader extends ClassLoader{
         byte[] data = loadClassData(name);
 
         //调用ClassLoader的dineClass方法将二进制数据转换成class对象
-        return this.defineClass(name,data,0,data.length);
+        return this.defineClass(name, data, 0, data.length);
     }
 
 

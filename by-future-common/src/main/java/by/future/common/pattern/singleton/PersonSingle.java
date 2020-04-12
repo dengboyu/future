@@ -3,6 +3,7 @@ package by.future.common.pattern.singleton;
 
 /**
  * 双重校验锁方式获取单例demo
+ * DCL必须要volatile
  *
  * @author by@Deng
  * @create 2019-08-21 00:36

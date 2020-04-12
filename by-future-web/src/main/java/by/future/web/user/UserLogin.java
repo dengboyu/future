@@ -69,14 +69,7 @@ public class UserLogin {
     @GetMapping("test")
     public String test(@RequestParam Map<String,String> requestMap, HttpServletResponse response){
 
-        /*if("aa".equalsIgnoreCase(requestMap.get("aa"))){
-            List<Integer> list = new ArrayList<>();
-            for(int i=0;i<Integer.MAX_VALUE;i++){
-                list.add(i);
-            }
-        }else{
-
-        }*/
+        
         String success = "success";
         if(requestMap.get("userId")!=null) success = requestMap.get("userId");
         return success;
