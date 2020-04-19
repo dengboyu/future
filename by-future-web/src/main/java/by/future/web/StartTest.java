@@ -1,5 +1,6 @@
 package by.future.web;
 
+import by.future.common.utils.MyClassLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,7 +21,19 @@ public class StartTest {
         
 //        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(StartTest.class);
 
-        logger.debug("我是info级别的");
+//        logger.debug("我是info级别的");
+
+
+
+
+        MyClassLoader myClassLoader1 = new MyClassLoader();
+        MyClassLoader myClassLoader2 = new MyClassLoader();
+        try {
+            myClassLoader1.loadClass("by.future.web.user.UserLogin");
+            myClassLoader2.loadClass("by.future.web.user.UserLogin");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 

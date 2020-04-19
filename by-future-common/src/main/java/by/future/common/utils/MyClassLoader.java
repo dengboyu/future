@@ -26,8 +26,8 @@ public class MyClassLoader extends ClassLoader{
 
         try {
             //当前项目路径
-            String path = this.getClass().getResource("/").getPath().substring(1);
-            className = className.replaceAll(".","/");
+            String path = this.getClass().getResource("/").getPath();
+            className = className.replaceAll("\\.","/");
 
             File classFile = new File(path + className+".class");
             long len = classFile.length();
@@ -54,4 +54,30 @@ public class MyClassLoader extends ClassLoader{
     }
 
 
+    /**
+     * 这样可以打破双亲委派
+     *
+     * @Author: by@Deng
+     * @Date: 2020/4/19 12:44 下午
+     */
+    @Override
+    public Class<?> loadClass(String name) throws ClassNotFoundException {
+
+        ClassLoader classLoader = ClassLoader.getSystemClassLoader().getParent();
+
+        Class<?> clazz = null;
+        try {
+
+            clazz = classLoader.loadClass(name);
+
+        }catch (Exception e){
+
+        }
+
+        if(clazz !=null){
+            return clazz;
+        }
+
+        return findClass(name);
+    }
 }
