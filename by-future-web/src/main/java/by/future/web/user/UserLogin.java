@@ -3,6 +3,8 @@ package by.future.web.user;
 
 import by.future.common.utils.ShortCodeUtils;
 import by.future.common.utils.UUIDUtils;
+import by.future.servicebiz.validation.RequestValidator;
+import by.future.servicebiz.validation.instance.LoginRequestValidator;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +32,9 @@ public class UserLogin {
      */
     @GetMapping("login")
     public String login(@RequestParam Map<String,String> requestMap, HttpServletRequest request, HttpServletResponse response){
+
+        RequestValidator<Map<String,String>> requestValidator = new LoginRequestValidator();
+        requestValidator.validate(requestMap);
 
         String ret1 = requestMap.get("u1");
         String ret2 = ShortCodeUtils.toBase62(289324432l);
