@@ -24,6 +24,7 @@ import java.util.concurrent.atomic.AtomicReference;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ServiceTest {
 
+
     private static Logger logger = LoggerFactory.getLogger(ServiceTest.class);
 
     //以下这两种很容易造成内存泄漏

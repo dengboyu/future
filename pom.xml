@@ -277,7 +277,7 @@
     </dependencyManagement>
 
 
-    <profiles>
+    <!--<profiles>
         <profile>
             <id>dev</id>
             <properties>
@@ -299,11 +299,10 @@
                 <profiles.active>prod</profiles.active>
             </properties>
         </profile>
-    </profiles>
+    </profiles>-->
 
 
     <build>
-
         <plugins>
             <!-- 把springBoot项目打包为jar可执行包 -->
             <plugin>
