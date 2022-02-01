@@ -177,7 +177,7 @@
             <dependency>
                 <groupId>com.thoughtworks.xstream</groupId>
                 <artifactId>xstream</artifactId>
-                <version>1.4.7</version>
+                <version>1.4.19</version>
             </dependency>
             <!--dom4j解析-->
             <dependency>
